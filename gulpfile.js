@@ -35,12 +35,13 @@ const dependencies = [
 gulp.task('vendor', function() {
   return gulp.src([
     'bower_components/jquery/dist/jquery.js',
+    'bower_components/semantic/dist/semantic.js',
     'bower_components/bootstrap/dist/js/bootstrap.js',
     'bower_components/magnific-popup/dist/jquery.magnific-popup.js',
     'bower_components/toastr/toastr.js'
   ]).pipe(concat('vendor.js'))
     .pipe(gulpif(production, uglify({ mangle: false })))
-    .pipe(gulp.dest('public/js'));
+    .pipe(gulp.dest('client/public/js'));
 });
 
 /*
@@ -55,7 +56,7 @@ gulp.task('browserify-vendor', function() {
     .pipe(source('vendor.bundle.js'))
     .pipe(buffer())
     .pipe(gulpif(production, uglify({ mangle: false })))
-    .pipe(gulp.dest('public/js'));
+    .pipe(gulp.dest('client/public/js'));
 });
 
 /*
@@ -64,7 +65,7 @@ gulp.task('browserify-vendor', function() {
  |--------------------------------------------------------------------------
  */
 gulp.task('browserify', ['browserify-vendor'], function() {
-  return browserify({ entries: 'app/main.js', debug: true })
+  return browserify({ entries: 'client/js/main.js', debug: true })
     .external(dependencies)
     .transform(babelify, { presets: ['es2015', 'react'] })
     .bundle()
@@ -73,7 +74,7 @@ gulp.task('browserify', ['browserify-vendor'], function() {
     .pipe(sourcemaps.init({ loadMaps: true }))
     .pipe(gulpif(production, uglify({ mangle: false })))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('public/js'));
+    .pipe(gulp.dest('client/public/js'));
 });
 
 /*
@@ -82,7 +83,7 @@ gulp.task('browserify', ['browserify-vendor'], function() {
  |--------------------------------------------------------------------------
  */
 gulp.task('browserify-watch', ['browserify-vendor'], function() {
-  const bundler = watchify(browserify({ entries: 'app/main.js', debug: true }, watchify.args));
+  const bundler = watchify(browserify({ entries: 'client/js/main.js', debug: true }, watchify.args));
   bundler.external(dependencies);
   bundler.transform(babelify, { presets: ['es2015', 'react'] });
   bundler.on('update', rebundle);
@@ -101,7 +102,7 @@ gulp.task('browserify-watch', ['browserify-vendor'], function() {
       .pipe(buffer())
       .pipe(sourcemaps.init({ loadMaps: true }))
       .pipe(sourcemaps.write('.'))
-      .pipe(gulp.dest('public/js/'));
+      .pipe(gulp.dest('client/public/js/'));
   }
 });
 
@@ -110,18 +111,18 @@ gulp.task('browserify-watch', ['browserify-vendor'], function() {
  | Compile LESS stylesheets.
  |--------------------------------------------------------------------------
  */
-gulp.task('styles', function() {
-  return gulp.src('app/stylesheets/main.less')
-    .pipe(plumber())
-    .pipe(less())
-    .pipe(autoprefixer())
-    .pipe(gulpif(production, cssmin()))
-    .pipe(gulp.dest('public/css'));
-});
+// gulp.task('styles', function() {
+//   return gulp.src('app/stylesheets/main.less')
+//     .pipe(plumber())
+//     .pipe(less())
+//     .pipe(autoprefixer())
+//     .pipe(gulpif(production, cssmin()))
+//     .pipe(gulp.dest('public/css'));
+// });
 
-gulp.task('watch', function() {
-  gulp.watch('app/stylesheets/**/*.less', ['styles']);
-});
+// gulp.task('watch', function() {
+//   gulp.watch('app/stylesheets/**/*.less', ['styles']);
+// });
 
-gulp.task('default', ['styles', 'vendor', 'browserify-watch', 'watch']);
-gulp.task('build', ['styles', 'vendor', 'browserify']);
+gulp.task('default', ['vendor', 'browserify-watch']);
+gulp.task('build', ['vendor', 'browserify']);
