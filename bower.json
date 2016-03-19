@@ -1,7 +1,7 @@
 {
   "name": "jeepsers",
   "description": "An online marketplace for selling off road vehicles.",
-  "main": "server.js",
+  "main": "server/server.js",
   "authors": [
     "Micah Wells <micahp0506@gmail.com>"
   ],
