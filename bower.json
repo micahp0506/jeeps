@@ -1,0 +1,25 @@
+{
+  "name": "jeepsers",
+  "description": "An online marketplace for selling off road vehicles.",
+  "main": "server.js",
+  "authors": [
+    "Micah Wells <micahp0506@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/micahp0506/jeeps",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.1.4",
+    "bootstrap": "^3.3.5",
+    "magnific-popup": "^1.0.0",
+    "toastr": "^2.1.1"
+  }
+
+}

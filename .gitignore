@@ -31,3 +31,9 @@ node_modules
 
 # Optional REPL history
 .node_repl_history
+
+#ignoring bower_components
+bower_components
+
+#ignoring bundles
+public/js
