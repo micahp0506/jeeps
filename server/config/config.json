@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "Micah",
+    "password": null,
+    "database": "jeepers",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "Micah",
+    "password": null,
+    "database": "jeepers",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "Micah",
+    "password": null,
+    "database": "jeepers",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
