@@ -9,7 +9,7 @@ class App extends React.Component {
     return (
       <div>
         <Navbar history={this.props.history} />
-        {this.props.children}
+            {this.props.children}
       </div>
     );
   }

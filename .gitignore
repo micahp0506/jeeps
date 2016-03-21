@@ -32,8 +32,13 @@ node_modules
 # Optional REPL history
 .node_repl_history
 
-#ignoring bower_components
-bower_components
+# Ignoring bundle file
+client/public/js/bundle.js
+client/public/js/bundle.js.map
 
-#ignoring bundles
-public/js
+# Ignoring bower_components
+client/js/bower_components
+
+#Ignoring svg and ttf
+*.svg
+*.ttf
