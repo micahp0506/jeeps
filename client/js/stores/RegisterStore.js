@@ -14,22 +14,25 @@ class RegisterStore {
     this.emailValidationState = '';
     this.passwordValidationState = '';
     this.registerState = false;
+    this.loginState = false;
   }
 
   // Handling the successful login of new user
   onRegisterSuccess(successMessage) {
     console.log("store this", this);
+    // this.email =
     this.emailValidationState = 'has-success';
     this.helpBlock = successMessage;
     this.registerState = true;
+    this.loginState = true;
   }
 
   // Handling the failure to login of new user
-  onregisterFail(errorMessage) {
+  onRegisterFail(errorMessage) {
     console.log("error", errorMessage);
     this.emailValidationState = 'has-error';
     this.helpBlock = errorMessage;
-    alert("Email or password is not correct. Please try again.")
+    console.log("Email or password is not correct. Please try again.");
   }
 
   // Binding provided email

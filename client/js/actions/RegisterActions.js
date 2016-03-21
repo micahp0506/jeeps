@@ -32,10 +32,12 @@ class RegisterActions {
         console.log("this", this);
         console.log("history", history);
         // history.pushState('/');
+
         this.actions.registerSuccess(data.message);
       })
-      .fail((jqXhr) => {
-        this.registerFail(jqXhr.responseJSON.message);
+      .fail((err) => {
+        console.log(err);
+        this.actions.registerFail(err);
       });
   }
 }

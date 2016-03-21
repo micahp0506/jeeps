@@ -6,6 +6,7 @@ import { browserHistory } from 'react-router'
 import RegisterStore from '../stores/RegisterStore';
 import RegisterActions from '../actions/RegisterActions';
 
+
 // Creating Register to handle actions and store
 class Register extends React.Component {
   constructor(props) {

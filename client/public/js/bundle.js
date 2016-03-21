@@ -109,9 +109,11 @@ var RegisterActions = function () {
         console.log("this", _this);
         console.log("history", history);
         // history.pushState('/');
+
         _this.actions.registerSuccess(data.message);
-      }).fail(function (jqXhr) {
-        _this.registerFail(jqXhr.responseJSON.message);
+      }).fail(function (err) {
+        console.log(err);
+        _this.actions.registerFail(err);
       });
     }
   }]);
@@ -3070,6 +3072,7 @@ var RegisterStore = function () {
     this.emailValidationState = '';
     this.passwordValidationState = '';
     this.registerState = false;
+    this.loginState = false;
   }
 
   // Handling the successful login of new user
@@ -3079,20 +3082,22 @@ var RegisterStore = function () {
     key: 'onRegisterSuccess',
     value: function onRegisterSuccess(successMessage) {
       console.log("store this", this);
+      // this.email =
       this.emailValidationState = 'has-success';
       this.helpBlock = successMessage;
       this.registerState = true;
+      this.loginState = true;
     }
 
     // Handling the failure to login of new user
 
   }, {
-    key: 'onregisterFail',
-    value: function onregisterFail(errorMessage) {
+    key: 'onRegisterFail',
+    value: function onRegisterFail(errorMessage) {
       console.log("error", errorMessage);
       this.emailValidationState = 'has-error';
       this.helpBlock = errorMessage;
-      alert("Email or password is not correct. Please try again.");
+      console.log("Email or password is not correct. Please try again.");
     }
 
     // Binding provided email
