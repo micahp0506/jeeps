@@ -2448,6 +2448,8 @@ var _LoginActions = require('../actions/LoginActions');
 
 var _LoginActions2 = _interopRequireDefault(_LoginActions);
 
+var _reactRouter = require('react-router');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2599,8 +2601,8 @@ var Login = function (_React$Component) {
             { className: 'ui message' },
             'New to us? ',
             _react2.default.createElement(
-              'a',
-              { href: '#/register' },
+              _reactRouter.Link,
+              { to: '/register' },
               'Sign Up'
             )
           )
@@ -2614,7 +2616,7 @@ var Login = function (_React$Component) {
 
 exports.default = Login;
 
-},{"../actions/LoginActions":1,"../stores/LoginStore":11,"react":"react"}],7:[function(require,module,exports){
+},{"../actions/LoginActions":1,"../stores/LoginStore":11,"react":"react","react-router":"react-router"}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2624,6 +2626,8 @@ Object.defineProperty(exports, "__esModule", {
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
+
+var _reactRouter = require('react-router');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2646,15 +2650,15 @@ exports.default = _react2.default.createClass({
                 'Home'
             ),
             _react2.default.createElement(
-                'a',
-                { className: 'item', id: 'login', href: '#/login' },
+                _reactRouter.Link,
+                { to: '/login', className: 'item', id: 'login' },
                 'Log In'
             )
         );
     }
 });
 
-},{"react":"react"}],8:[function(require,module,exports){
+},{"react":"react","react-router":"react-router"}],8:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2865,7 +2869,7 @@ exports.default = Register;
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _react = require('react');
@@ -2893,11 +2897,15 @@ var _Register2 = _interopRequireDefault(_Register);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = _react2.default.createElement(
-  _reactRouter.Route,
-  { component: _App2.default },
-  _react2.default.createElement(_reactRouter.Route, { path: '/', component: _Home2.default }),
-  _react2.default.createElement(_reactRouter.Route, { path: '/login', component: _Login2.default }),
-  _react2.default.createElement(_reactRouter.Route, { path: '/register', component: _Register2.default })
+    _reactRouter.Router,
+    { history: _reactRouter.browserHistory },
+    _react2.default.createElement(
+        _reactRouter.Route,
+        { component: _App2.default },
+        _react2.default.createElement(_reactRouter.Route, { path: '/', component: _Home2.default }),
+        _react2.default.createElement(_reactRouter.Route, { path: 'login', component: _Login2.default }),
+        _react2.default.createElement(_reactRouter.Route, { path: 'register', component: _Register2.default })
+    )
 );
 
 },{"../components/App":4,"../components/Home":5,"../components/Login":6,"../components/Register":8,"react":"react","react-router":"react-router"}],10:[function(require,module,exports){

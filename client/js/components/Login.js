@@ -4,6 +4,7 @@
 import React from 'react';
 import LoginStore from '../stores/LoginStore';
 import LoginActions from '../actions/LoginActions';
+import {Route, Router, browserHistory, Link} from 'react-router';
 
 
 // Creating Login to handle actions and store
@@ -98,7 +99,7 @@ class Login extends React.Component {
                     <div className="ui error message"></div>
                 </form>
             <div className="ui message">
-                New to us? <a href="#/register">Sign Up</a>
+                New to us? <Link to={'/register'}>Sign Up</Link>
             </div>
         </div>
     </div>

@@ -1,0 +1,49 @@
+.main-container {
+  background: url('img/jeep.jpeg') center center fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 800px;
+}
+
+.logo-container {
+  font-size: 2.1rem;
+  color: #fff;
+}
+
+.ui.inverted.menu.navbar {
+  width: 100%;
+  background-color: black;
+  margin-bottom: 0;
+}
+
+.parent {
+  background: url('../img/jeep.jpeg') center center fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 800px;
+  /*margin: 250px 0 0 500px;*/
+}
+
+.ui.black.inverted.button {
+    width: 150px;
+}
+
+.ui.middle.aligned.center.aligned.grid {
+  background: url('../img/jeep.jpeg') center center fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 800px;
+  opacity: .6;
+}
+
+body > .grid {
+  height: 100%;
+}
+
+.column {
+  max-width: 450px;
+  margin-top: -300px;
+}
