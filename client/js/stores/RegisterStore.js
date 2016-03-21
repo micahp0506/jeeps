@@ -13,6 +13,7 @@ class RegisterStore {
     this.helpBlock = '';
     this.emailValidationState = '';
     this.passwordValidationState = '';
+    this.registerState = false;
   }
 
   // Handling the successful login of new user
@@ -20,6 +21,7 @@ class RegisterStore {
     console.log("store this", this);
     this.emailValidationState = 'has-success';
     this.helpBlock = successMessage;
+    this.registerState = true;
   }
 
   // Handling the failure to login of new user

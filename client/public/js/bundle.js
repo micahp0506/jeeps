@@ -79,6 +79,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+var createBrowserHistory = require('history/lib/createBrowserHistory');
+var history = createBrowserHistory();
+
+
 // Creating constructor to handle different states
 
 var RegisterActions = function () {
@@ -103,6 +107,8 @@ var RegisterActions = function () {
       }).done(function (data) {
         console.log("data", data);
         console.log("this", _this);
+        console.log("history", history);
+        // history.pushState('/');
         _this.actions.registerSuccess(data.message);
       }).fail(function (jqXhr) {
         _this.registerFail(jqXhr.responseJSON.message);
@@ -115,7 +121,7 @@ var RegisterActions = function () {
 
 exports.default = _alt2.default.createActions(RegisterActions);
 
-},{"../bower_components/jquery/dist/jquery.min.js":3,"../utils/alt":13,"react-router":"react-router"}],3:[function(require,module,exports){
+},{"../bower_components/jquery/dist/jquery.min.js":3,"../utils/alt":13,"history/lib/createBrowserHistory":22,"react-router":"react-router"}],3:[function(require,module,exports){
 "use strict";
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
@@ -2755,7 +2761,12 @@ var Register = function (_React$Component) {
   }, {
     key: 'onChange',
     value: function onChange(state) {
+      console.log("cstate", state);
       this.setState(state);
+      if (this.state.registerState) {
+        this.props.history.push('/');
+        // console.log("this.props", this.props);
+      }
     }
 
     // Handling submit on users info
@@ -3058,6 +3069,7 @@ var RegisterStore = function () {
     this.helpBlock = '';
     this.emailValidationState = '';
     this.passwordValidationState = '';
+    this.registerState = false;
   }
 
   // Handling the successful login of new user
@@ -3069,6 +3081,7 @@ var RegisterStore = function () {
       console.log("store this", this);
       this.emailValidationState = 'has-success';
       this.helpBlock = successMessage;
+      this.registerState = true;
     }
 
     // Handling the failure to login of new user

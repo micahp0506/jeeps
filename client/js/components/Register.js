@@ -46,7 +46,12 @@ class Register extends React.Component {
 
   // When change occurs handle state
   onChange(state) {
+    console.log("cstate", state);
     this.setState(state);
+    if (this.state.registerState) {
+      this.props.history.push('/');
+      // console.log("this.props", this.props);
+    }
   }
 
   // Handling submit on users info

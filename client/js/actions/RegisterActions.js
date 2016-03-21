@@ -2,7 +2,9 @@
 
 
 import alt from '../utils/alt';
-import {browserHistory} from "react-router";
+import {Router, browserHistory} from "react-router";
+const createBrowserHistory = require('history/lib/createBrowserHistory');
+let history = createBrowserHistory();
 import $ from '../bower_components/jquery/dist/jquery.min.js';
 
 
@@ -28,6 +30,8 @@ class RegisterActions {
       .done((data) => {
         console.log("data", data);
         console.log("this", this);
+        console.log("history", history);
+        // history.pushState('/');
         this.actions.registerSuccess(data.message);
       })
       .fail((jqXhr) => {
