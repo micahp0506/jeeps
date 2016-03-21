@@ -64,7 +64,7 @@ class Login extends React.Component {
     if (email && password) {
       LoginActions.loginUser(email, password);
       this.setState({email: '', password: ''});
-      this._reactInternalInstance._context.history.push('/');
+      // this._reactInternalInstance._context.history.push('/');
     }
   }
 
@@ -94,7 +94,7 @@ class Login extends React.Component {
                                 </input>
                             </div>
                         </div>
-                        <div className="ui fluid large black submit button" onClick={this.handleSubmit}>Login</div>
+                        <button className="ui fluid large black submit button" onClick={this.handleSubmit}>Login</button>
                     </div>
                     <div className="ui error message"></div>
                 </form>

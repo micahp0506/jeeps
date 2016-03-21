@@ -11,6 +11,7 @@ class Register extends React.Component {
   constructor(props) {
     super(props);
     this.state = RegisterStore.getState();
+    console.log("this.state", this.state);
     this.onChange = this.onChange.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
@@ -50,15 +51,17 @@ class Register extends React.Component {
 
   // Handling submit on users info
   handleSubmit(event) {
+    event.preventDefault();
+    console.log("this", this);
     // Email and Password provided by user
-    let email = this.refs.email.value;
-    let password = this.refs.password.value;
-    let confirmPassword = this.refs.confirmPassword.value;
+    let email = this.state.email;
+    let password = this.state.password;
+    let confirmPassword = this.state.confirmPassword;
 
     // If no email provided
     if (!email) {
       RegisterActions.noEmail();
-      this.refs.nameTextField.getDOMNode().focus();
+      // this.refs.email.getDOMNode().focus();
     }
 
     // If no password provided
@@ -74,8 +77,8 @@ class Register extends React.Component {
     // Handling registration of new user
     if (email && password) {
       RegisterActions.addUser(email, password);
-      this.setState({email: '', password: '', confirmPassword: ''});
-      this._reactInternalInstance._context.history.push('/');
+      // this.setState({email: '', password: '', confirmPassword: ''});
+      // this._reactInternalInstance._context.history.push('/');
     }
   }
 
@@ -112,7 +115,7 @@ class Register extends React.Component {
                                 </input>
                             </div>
                         </div>
-                        <div className="ui fluid large black submit button" onClick={this.handleSubmit}>Register & Log In</div>
+                        <button className="ui fluid large black submit button" onClick={this.handleSubmit}>Register & Log In</button>
                     </div>
                     <div className="ui error message"></div>
                 </form>

@@ -85,7 +85,7 @@ var RegisterActions = function () {
   function RegisterActions() {
     _classCallCheck(this, RegisterActions);
 
-    this.generateActions('registerSuccess', 'registerFail', 'newEmail', 'newPassword', 'noEmail', 'noPassword', 'doesNotMatch');
+    this.generateActions('registerSuccess', 'registerFail', 'noEmail', 'noPassword', 'doesNotMatch');
   }
 
   // Making POST call to DB to add new user info
@@ -103,7 +103,7 @@ var RegisterActions = function () {
       }).done(function (data) {
         console.log("data", data);
         console.log("this", _this);
-        _this.registerSuccess(data.message);
+        _this.actions.registerSuccess(data.message);
       }).fail(function (jqXhr) {
         _this.registerFail(jqXhr.responseJSON.message);
       });
@@ -2541,7 +2541,7 @@ var Login = function (_React$Component) {
       if (email && password) {
         _LoginActions2.default.loginUser(email, password);
         this.setState({ email: '', password: '' });
-        this._reactInternalInstance._context.history.push('/');
+        // this._reactInternalInstance._context.history.push('/');
       }
     }
   }, {
@@ -2589,7 +2589,7 @@ var Login = function (_React$Component) {
                 )
               ),
               _react2.default.createElement(
-                'div',
+                'button',
                 { className: 'ui fluid large black submit button', onClick: this.handleSubmit },
                 'Login'
               )
@@ -2645,8 +2645,8 @@ exports.default = _react2.default.createClass({
                 'Jeepers'
             ),
             _react2.default.createElement(
-                'a',
-                { className: 'item', href: '#/home' },
+                _reactRouter.Link,
+                { to: '/', className: 'item', id: 'home' },
                 'Home'
             ),
             _react2.default.createElement(
@@ -2700,6 +2700,7 @@ var Register = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Register).call(this, props));
 
     _this.state = _RegisterStore2.default.getState();
+    console.log("this.state", _this.state);
     _this.onChange = _this.onChange.bind(_this);
     _this.handleEmailChange = _this.handleEmailChange.bind(_this);
     _this.handlePasswordChange = _this.handlePasswordChange.bind(_this);
@@ -2762,15 +2763,17 @@ var Register = function (_React$Component) {
   }, {
     key: 'handleSubmit',
     value: function handleSubmit(event) {
+      event.preventDefault();
+      console.log("this", this);
       // Email and Password provided by user
-      var email = this.refs.email.value;
-      var password = this.refs.password.value;
-      var confirmPassword = this.refs.confirmPassword.value;
+      var email = this.state.email;
+      var password = this.state.password;
+      var confirmPassword = this.state.confirmPassword;
 
       // If no email provided
       if (!email) {
         _RegisterActions2.default.noEmail();
-        this.refs.nameTextField.getDOMNode().focus();
+        // this.refs.email.getDOMNode().focus();
       }
 
       // If no password provided
@@ -2786,8 +2789,8 @@ var Register = function (_React$Component) {
       // Handling registration of new user
       if (email && password) {
         _RegisterActions2.default.addUser(email, password);
-        this.setState({ email: '', password: '', confirmPassword: '' });
-        this._reactInternalInstance._context.history.push('/');
+        // this.setState({email: '', password: '', confirmPassword: ''});
+        // this._reactInternalInstance._context.history.push('/');
       }
     }
 
@@ -2848,7 +2851,7 @@ var Register = function (_React$Component) {
                 )
               ),
               _react2.default.createElement(
-                'div',
+                'button',
                 { className: 'ui fluid large black submit button', onClick: this.handleSubmit },
                 'Register & Log In'
               )
@@ -2903,8 +2906,8 @@ exports.default = _react2.default.createElement(
         _reactRouter.Route,
         { component: _App2.default },
         _react2.default.createElement(_reactRouter.Route, { path: '/', component: _Home2.default }),
-        _react2.default.createElement(_reactRouter.Route, { path: 'login', component: _Login2.default }),
-        _react2.default.createElement(_reactRouter.Route, { path: 'register', component: _Register2.default })
+        _react2.default.createElement(_reactRouter.Route, { path: '/login', component: _Login2.default }),
+        _react2.default.createElement(_reactRouter.Route, { path: '/register', component: _Register2.default })
     )
 );
 
@@ -3061,8 +3064,8 @@ var RegisterStore = function () {
 
 
   _createClass(RegisterStore, [{
-    key: 'onregisterSuccess',
-    value: function onregisterSuccess(successMessage) {
+    key: 'onRegisterSuccess',
+    value: function onRegisterSuccess(successMessage) {
       console.log("store this", this);
       this.emailValidationState = 'has-success';
       this.helpBlock = successMessage;
@@ -3082,8 +3085,8 @@ var RegisterStore = function () {
     // Binding provided email
 
   }, {
-    key: 'onnewEmail',
-    value: function onnewEmail(event) {
+    key: 'onupdateEmail',
+    value: function onupdateEmail(event) {
       this.email = event.target.value;
       this.emailValidationState = '';
     }
@@ -3091,8 +3094,17 @@ var RegisterStore = function () {
     // Binding provided hashed password
 
   }, {
-    key: 'onnewPassword',
-    value: function onnewPassword(event) {
+    key: 'onupdatePassword',
+    value: function onupdatePassword(event) {
+      this.password = event.target.value;
+      this.passwordValidationState = '';
+    }
+
+    // Binding provided hashed password
+
+  }, {
+    key: 'onupdateConfirmPassword',
+    value: function onupdateConfirmPassword(event) {
       this.password = event.target.value;
       this.passwordValidationState = '';
     }

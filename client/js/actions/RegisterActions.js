@@ -12,8 +12,6 @@ class RegisterActions {
     this.generateActions(
       'registerSuccess',
       'registerFail',
-      'newEmail',
-      'newPassword',
       'noEmail',
       'noPassword',
       'doesNotMatch'
@@ -30,7 +28,7 @@ class RegisterActions {
       .done((data) => {
         console.log("data", data);
         console.log("this", this);
-        this.registerSuccess(data.message);
+        this.actions.registerSuccess(data.message);
       })
       .fail((jqXhr) => {
         this.registerFail(jqXhr.responseJSON.message);

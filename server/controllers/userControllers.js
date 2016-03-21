@@ -13,7 +13,7 @@ UserController.registerUser = function (req, res) {
 
             res.sendStatus(404)
         } else {
-
+            console.log("success");
           res.sendStatus(200);
         }
     });

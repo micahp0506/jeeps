@@ -16,7 +16,7 @@ class RegisterStore {
   }
 
   // Handling the successful login of new user
-  onregisterSuccess(successMessage) {
+  onRegisterSuccess(successMessage) {
     console.log("store this", this);
     this.emailValidationState = 'has-success';
     this.helpBlock = successMessage;
@@ -31,13 +31,19 @@ class RegisterStore {
   }
 
   // Binding provided email
-  onnewEmail(event) {
+  onupdateEmail(event) {
     this.email = event.target.value;
     this.emailValidationState = '';
   }
 
  // Binding provided hashed password
-  onnewPassword(event) {
+  onupdatePassword(event) {
+    this.password = event.target.value;
+    this.passwordValidationState = '';
+  }
+
+  // Binding provided hashed password
+  onupdateConfirmPassword(event) {
     this.password = event.target.value;
     this.passwordValidationState = '';
   }
