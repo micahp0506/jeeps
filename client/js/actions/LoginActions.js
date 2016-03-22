@@ -24,8 +24,6 @@ class LoginActions {
       data: { userEmail: email, userPassword: password }
     }, )
       .done((data) => {
-        console.log("data", data);
-        console.log("this", this);
         this.actions.loginSuccess(data.message);
       })
       .fail((err) => {

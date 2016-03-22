@@ -10,7 +10,6 @@ const UserController = {};
 
 // Controls users registration as a new user
 UserController.registerUser = (req, res, done) => {
-    console.log("controller in");
     db.User.findOne({where:{userEmail: req.body.userEmail}})
         .then((existingUser)=> {
             if (existingUser) {
@@ -39,44 +38,8 @@ UserController.registerUser = (req, res, done) => {
 
 // Controls the logging in of a user
 UserController.login = (req, res, done) => {
-    console.log("login in");
-    res.send(200);
+    res.sendStatus(200);
 }
-// UserController.loginUser = function (req, res) {
-    // console.log("loginUser in");
-    // console.log("req.body", req.body);
 
-    // Serialize sessions
-
-
-
-    // passport.use(new LocalStrategy({
-    //     usernameField: 'userEmail'
-    // },
-    // (email, password, done) => {
-    //     console.log("email", email);
-    //     console.log("pass", password);
-    //     db.User.findOne({where:{userEmail: req.body.userEmail}})
-    //     .then((err, user)=> {
-    //         if (err) throw (err);
-
-    //         if (user) {
-    //             db.User.authenticate(password, (err, valid) => {
-    //                 if (err) throw err;
-
-    //                 if (valid) {
-    //                     console.log("User loggged in");
-    //                     // return done(null, user);
-    //                     res.sendStatus(200);
-    //                 } else {
-    //                     return done();
-    //                 }
-    //             });
-    //         } else {
-    //             return done();
-    //         }
-    //     });
-    // }));
-// };
 
 module.exports = UserController;
