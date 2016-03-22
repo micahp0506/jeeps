@@ -26,11 +26,10 @@ class LoginActions {
       .done((data) => {
         console.log("data", data);
         console.log("this", this);
-        console.log("User logged in");
-        this.registerSuccess(data.message);
+        this.actions.loginSuccess(data.message);
       })
-      .fail((jqXhr) => {
-        this.registerFail(jqXhr.responseJSON.message);
+      .fail((err) => {
+        this.actions.loginFail(err);
       });
   }
 }

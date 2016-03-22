@@ -13,21 +13,24 @@ class LoginStore {
     this.helpBlock = '';
     this.emailValidationState = '';
     this.passwordValidationState = '';
+    this.loginState = false;
   }
 
   // Handling the registration of new user
-  onloginSuccess(successMessage) {
+  onLoginSuccess(successMessage) {
     console.log("store this", this);
+    console.log("user logged in");
     this.emailValidationState = 'has-success';
     this.helpBlock = successMessage;
+    this.loginState = true;
   }
 
   // Handling the failure to register of new user
-  onloginFail(errorMessage) {
+  onLoginFail(errorMessage) {
     console.log("error", errorMessage);
     this.emailValidationState = 'has-error';
     this.helpBlock = errorMessage;
-    alert("User already exists.")
+    console.log("Email or password is not correct. Please try again.");
   }
 
   // Handling no email provided by user

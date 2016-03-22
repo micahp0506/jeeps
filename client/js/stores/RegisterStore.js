@@ -19,7 +19,7 @@ class RegisterStore {
 
   // Handling the successful login of new user
   onRegisterSuccess(successMessage) {
-    console.log("store this", this);
+    console.log("user registered");
     // this.email =
     this.emailValidationState = 'has-success';
     this.helpBlock = successMessage;

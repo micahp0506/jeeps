@@ -41,13 +41,18 @@ class Login extends React.Component {
   // When change occurs handle state
   onChange(state) {
     this.setState(state);
+    if (this.state.registerState) {
+      this.props.history.push('/');
+      // console.log("this.props", this.props);
+    }
   }
 
   // Handling submit on users info
   handleSubmit(event) {
+    event.preventDefault();
     // Email and Password provided by user
-    let email = this.refs.email.value;
-    let password = this.refs.password.value;
+    let email = this.state.email;
+    let password = this.state.password;
 
     // If no email provided
     if (!email) {
@@ -63,7 +68,7 @@ class Login extends React.Component {
     // Handling login of user
     if (email && password) {
       LoginActions.loginUser(email, password);
-      this.setState({email: '', password: ''});
+      // this.setState({email: '', password: ''});
       // this._reactInternalInstance._context.history.push('/');
     }
   }

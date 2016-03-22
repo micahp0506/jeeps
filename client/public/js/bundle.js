@@ -43,10 +43,9 @@ var LoginActions = function () {
       }).done(function (data) {
         console.log("data", data);
         console.log("this", _this);
-        console.log("User logged in");
-        _this.registerSuccess(data.message);
-      }).fail(function (jqXhr) {
-        _this.registerFail(jqXhr.responseJSON.message);
+        _this.actions.loginSuccess(data.message);
+      }).fail(function (err) {
+        _this.actions.loginFail(err);
       });
     }
   }]);
@@ -64,6 +63,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+// const createBrowserHistory = require('history/lib/createBrowserHistory');
+// let history = createBrowserHistory();
+
 
 var _alt = require('../utils/alt');
 
@@ -78,10 +80,6 @@ var _jqueryMin2 = _interopRequireDefault(_jqueryMin);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var createBrowserHistory = require('history/lib/createBrowserHistory');
-var history = createBrowserHistory();
-
 
 // Creating constructor to handle different states
 
@@ -105,14 +103,14 @@ var RegisterActions = function () {
         url: '/api/user/create',
         data: { userEmail: email, userPassword: password }
       }).done(function (data) {
-        console.log("data", data);
-        console.log("this", _this);
-        console.log("history", history);
+        // console.log("data", data);
+        // console.log("this", this);
+        // console.log("history", history);
         // history.pushState('/');
 
         _this.actions.registerSuccess(data.message);
       }).fail(function (err) {
-        console.log(err);
+        // console.log(err);
         _this.actions.registerFail(err);
       });
     }
@@ -123,7 +121,7 @@ var RegisterActions = function () {
 
 exports.default = _alt2.default.createActions(RegisterActions);
 
-},{"../bower_components/jquery/dist/jquery.min.js":3,"../utils/alt":13,"history/lib/createBrowserHistory":22,"react-router":"react-router"}],3:[function(require,module,exports){
+},{"../bower_components/jquery/dist/jquery.min.js":3,"../utils/alt":13,"react-router":"react-router"}],3:[function(require,module,exports){
 "use strict";
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
@@ -2523,6 +2521,10 @@ var Login = function (_React$Component) {
     key: 'onChange',
     value: function onChange(state) {
       this.setState(state);
+      if (this.state.registerState) {
+        this.props.history.push('/');
+        // console.log("this.props", this.props);
+      }
     }
 
     // Handling submit on users info
@@ -2530,9 +2532,10 @@ var Login = function (_React$Component) {
   }, {
     key: 'handleSubmit',
     value: function handleSubmit(event) {
+      event.preventDefault();
       // Email and Password provided by user
-      var email = this.refs.email.value;
-      var password = this.refs.password.value;
+      var email = this.state.email;
+      var password = this.state.password;
 
       // If no email provided
       if (!email) {
@@ -2548,7 +2551,7 @@ var Login = function (_React$Component) {
       // Handling login of user
       if (email && password) {
         _LoginActions2.default.loginUser(email, password);
-        this.setState({ email: '', password: '' });
+        // this.setState({email: '', password: ''});
         // this._reactInternalInstance._context.history.push('/');
       }
     }
@@ -2777,7 +2780,6 @@ var Register = function (_React$Component) {
     key: 'handleSubmit',
     value: function handleSubmit(event) {
       event.preventDefault();
-      console.log("this", this);
       // Email and Password provided by user
       var email = this.state.email;
       var password = this.state.password;
@@ -2990,28 +2992,31 @@ var LoginStore = function () {
     this.helpBlock = '';
     this.emailValidationState = '';
     this.passwordValidationState = '';
+    this.loginState = false;
   }
 
   // Handling the registration of new user
 
 
   _createClass(LoginStore, [{
-    key: 'onloginSuccess',
-    value: function onloginSuccess(successMessage) {
+    key: 'onLoginSuccess',
+    value: function onLoginSuccess(successMessage) {
       console.log("store this", this);
+      console.log("user logged in");
       this.emailValidationState = 'has-success';
       this.helpBlock = successMessage;
+      this.loginState = true;
     }
 
     // Handling the failure to register of new user
 
   }, {
-    key: 'onloginFail',
-    value: function onloginFail(errorMessage) {
+    key: 'onLoginFail',
+    value: function onLoginFail(errorMessage) {
       console.log("error", errorMessage);
       this.emailValidationState = 'has-error';
       this.helpBlock = errorMessage;
-      alert("User already exists.");
+      console.log("Email or password is not correct. Please try again.");
     }
 
     // Handling no email provided by user
@@ -3081,7 +3086,7 @@ var RegisterStore = function () {
   _createClass(RegisterStore, [{
     key: 'onRegisterSuccess',
     value: function onRegisterSuccess(successMessage) {
-      console.log("store this", this);
+      console.log("user registered");
       // this.email =
       this.emailValidationState = 'has-success';
       this.helpBlock = successMessage;

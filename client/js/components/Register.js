@@ -58,7 +58,6 @@ class Register extends React.Component {
   // Handling submit on users info
   handleSubmit(event) {
     event.preventDefault();
-    console.log("this", this);
     // Email and Password provided by user
     let email = this.state.email;
     let password = this.state.password;
