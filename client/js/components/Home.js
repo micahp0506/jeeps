@@ -4,7 +4,7 @@
 'use strict'
 
 import React from 'react';
-// import HomeActions from '../actions/HomeActions';
+import {Route, Router, browserHistory, Link} from 'react-router';
 
 
 
@@ -12,8 +12,8 @@ export default React.createClass({
   render() {
     return (
         <div className="parent">
-            <div className="ui black inverted button">Search Inventory</div>
-            <div className="ui black inverted button">Sale your Rig</div>
+            <Link to={'/search'} className="ui black inverted button">Search Inventory</Link>
+            <Link to={'/sale'} className="ui black inverted button">Sale your Rig</Link>
         </div>
     )
   }

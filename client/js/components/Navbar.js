@@ -10,7 +10,7 @@ export default React.createClass({
     return (
         <div className="ui inverted menu navbar ">
             <a href="#" className="brand item logo-container">Jeepers</a>
-            <Link to={'/'}className="item" id="home">Home</Link>
+            <Link to={'/'} className="item" id="home">Home</Link>
             <Link to={'/login'} className="item" id="login">Log In</Link>
         </div>
     )

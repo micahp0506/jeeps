@@ -22,7 +22,7 @@ class LoginActions {
       type: 'POST',
       url: '/api/user/login',
       data: { userEmail: email, userPassword: password }
-    }, )
+    })
       .done((data) => {
         this.actions.loginSuccess(data.message);
       })

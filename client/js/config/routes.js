@@ -7,6 +7,8 @@ import App from '../components/App';
 import Home from '../components/Home';
 import Login from '../components/Login';
 import Register from '../components/Register';
+import Search from '../components/Search';
+import Sale from '../components/Sale';
 
 export default (
     <Router history={browserHistory}>
@@ -14,6 +16,8 @@ export default (
             <Route path='/' component={Home} />
             <Route path='/login' component={Login} />
             <Route path='/register' component={Register} />
+            <Route path='/search' component={Search} />
+            <Route path='/sale' component={Sale} />
         </Route>
     </Router>
 );

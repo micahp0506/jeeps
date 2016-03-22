@@ -6,6 +6,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const db = require('../models/');
 db.sequelize.sync();
 
+// Using passport to authenticate the user
 passport.serializeUser(function(user, done) {
     done(null, user.userId);
 });
