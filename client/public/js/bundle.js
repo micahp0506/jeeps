@@ -38,7 +38,7 @@ var LoginActions = function () {
 
       _jqueryMin2.default.ajax({
         type: 'POST',
-        url: '/api/user',
+        url: '/api/user/login',
         data: { userEmail: email, userPassword: password }
       }).done(function (data) {
         console.log("data", data);
@@ -2521,7 +2521,7 @@ var Login = function (_React$Component) {
     key: 'onChange',
     value: function onChange(state) {
       this.setState(state);
-      if (this.state.registerState) {
+      if (this.state.loginState) {
         this.props.history.push('/');
         // console.log("this.props", this.props);
       }

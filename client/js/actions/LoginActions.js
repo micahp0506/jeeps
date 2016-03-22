@@ -20,9 +20,9 @@ class LoginActions {
   loginUser(email, password) {
     $.ajax({
       type: 'POST',
-      url: '/api/user',
+      url: '/api/user/login',
       data: { userEmail: email, userPassword: password }
-    })
+    }, )
       .done((data) => {
         console.log("data", data);
         console.log("this", this);

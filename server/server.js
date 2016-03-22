@@ -14,7 +14,9 @@ const async = require('async');
 const request = require('request');
 const xml2js = require('xml2js');
 const _ = require('underscore');
+const passport = require('passport');
 const routes = require('./routes');
+const session = require('express-session')
 
 // Babel ES6/JSX Compiler
 require('babel-register');
@@ -24,10 +26,16 @@ const PORT = process.env.PORT || 3000;
 
 
 app.use(express.static(path.join(__dirname,'..', 'client/public')));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(routes);
+app.use(session({ secret: 'SECRETS'}))
 
+app.use(passport.initialize());
+app.use(passport.session());
+
+require('./controllers/passportController');
+
+app.use(routes);
 
 app.listen(PORT, () => {
     console.log(__dirname)

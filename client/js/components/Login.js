@@ -41,7 +41,7 @@ class Login extends React.Component {
   // When change occurs handle state
   onChange(state) {
     this.setState(state);
-    if (this.state.registerState) {
+    if (this.state.loginState) {
       this.props.history.push('/');
       // console.log("this.props", this.props);
     }
