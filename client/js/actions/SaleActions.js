@@ -26,7 +26,6 @@ class SaleActions {
         userId: id,
         contactEmail: email,
         contactName: name,
-        // category: category,
         make: make,
         model: model,
         year: year,

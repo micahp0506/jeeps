@@ -18,7 +18,7 @@ class SaleStore {
 
   // Handling the posting of a new add
   onSaleSuccess(successMessage) {
-    console.log("store login Success");
+    console.log("Store Added new post");
     this.emailValidationState = 'has-success';
     this.helpBlock = successMessage;
     this.saleState = true;

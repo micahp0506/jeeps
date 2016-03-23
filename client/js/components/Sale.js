@@ -108,7 +108,7 @@ class Sale extends React.Component {
 
     // Handling the creation of the new sale post
     if (email && name) {
-      SaleActions.createSale(userId, email, name, make, model, year, description);
+      SaleActions.createSale(userId, email, name, make, model, year, description, category);
       // this.setState({email: '', password: ''});
       // this._reactInternalInstance._context.history.push('/');
     }

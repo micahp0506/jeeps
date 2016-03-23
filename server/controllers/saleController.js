@@ -18,6 +18,7 @@ SaleController.newPost = (req, res, done) => {
                     model: req.body.model,
                     year: req.body.year,
                     description: req.body.description,
+                    category: req.body.category,
                     userId: req.body.userId
                 });
                 post.save()
