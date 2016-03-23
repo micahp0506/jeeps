@@ -2,28 +2,32 @@
 
 
 module.exports = function (sequelize, DataTypes) {
-  const Posts = sequelize.define('Posts', {
+  const Post = sequelize.define('Post', {
     postId: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    category: DataTypes.STRING,
+    contactName: DataTypes.STRING,
+    contactEmail: DataTypes.STRING,
+    // category: DataTypes.STRING,
     description: DataTypes.STRING,
-    image: DataTypes.BLOB,
+    // image: DataTypes.BLOB,
     make: DataTypes.STRING,
     model: DataTypes.STRING,
-    userId: DataTypes.INTEGER
+    year: DataTypes.STRING,
+    // userId: DataTypes.INTEGER
   }, {
     tableName: 'posts',
     timestamps: false,
     classMethods: {
-      associate: function (models) {
-        // associations can be defined here
-        Posts.belongsTo(models.User, {foreignKey: 'userId'});
-      }
+    //   associate: function (models) {
+    //     // associations can be defined here
+    //     Posts.belongsTo(models.User, {foreignKey: 'userId'});
+    //   }
+    // }
     }
   });
 
-  return Posts;
+  return Post;
 };

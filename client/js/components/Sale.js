@@ -2,7 +2,7 @@
 
 
 import React from 'react';
-import SaleStore from '../stores/SaleStore';
+import SaleStore from '../stores/LoginStore';
 import SaleActions from '../actions/SaleActions';
 import {Route, Router, browserHistory, Link} from 'react-router';
 
@@ -18,6 +18,7 @@ class Sale extends React.Component {
     this.handleCategoryChange = this.handleCategoryChange.bind(this);
     this.handleMakeChange = this.handleMakeChange.bind(this);
     this.handleModelChange = this.handleModelChange.bind(this);
+    this.handleYearChange = this.handleYearChange.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -58,7 +59,7 @@ class Sale extends React.Component {
   }
 
   // Handling the year value change
-  handleDescriptionChange() {
+  handleYearChange() {
     this.setState({year: this.refs.year.value});
   }
 
@@ -108,7 +109,7 @@ class Sale extends React.Component {
 
     // Handling the creation of the new sale post
     if (email && name) {
-      SaleActions.createSale(email, name, make, model, description);
+      SaleActions.createSale(email, name, make, model, year, description);
       // this.setState({email: '', password: ''});
       // this._reactInternalInstance._context.history.push('/');
     }

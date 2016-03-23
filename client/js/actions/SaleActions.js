@@ -9,25 +9,26 @@ import $ from '../bower_components/jquery/dist/jquery.min.js';
 class SaleActions {
   constructor() {
     this.generateActions(
-      'loginSuccess',
-      'loginFail',
+      'saleSuccess',
+      'saleFail',
       'noEmail',
-      'noPassword'
+      'noName'
     );
   }
 
   // Making Get call to DB to get user info
-  createSale(email, name, category, make, model, image, description) {
+  createSale(email, name, make, model, year, description) {
+    console.log(email, name, make, model, year, description);
     $.ajax({
       type: 'POST',
-      url: '/api/sale/create',
+      url: '/api/post/create',
       data: {
         contactEmail: email,
         contactName: name,
-        category: category,
+        // category: category,
         make: make,
         model: model,
-        image: image,
+        year: year,
         description: description
       }
     })
