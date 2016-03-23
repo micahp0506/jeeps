@@ -87,13 +87,11 @@ class Sale extends React.Component {
     let userId = loginState.userId;
     let email = this.state.email;
     let name = this.state.name;
-    // let category = this.state.category;
     let make = this.state.make;
     let model = this.state.model;
     let year = this.state.year;
     let description = this.state.description;
     let category = this.refs.menu.value;
-    console.log("category", category);
 
     // If no email provided
     if (!email) {
