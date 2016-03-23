@@ -12,7 +12,8 @@ class LoginActions {
       'loginSuccess',
       'loginFail',
       'noEmail',
-      'noPassword'
+      'noPassword',
+      'getUserId'
     );
   }
 
@@ -24,7 +25,7 @@ class LoginActions {
       data: { userEmail: email, userPassword: password }
     })
       .done((data) => {
-        this.actions.loginSuccess(data.message);
+        this.actions.loginSuccess(data);
       })
       .fail((err) => {
         this.actions.loginFail(err);

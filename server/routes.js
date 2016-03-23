@@ -8,10 +8,7 @@ const userController = require('./controllers/userController');
 const saleController = require('./controllers/saleController');
 
 
-router.post('/api/user/login', passport.authenticate('local'), (req, res, next) => {
-    console.log('hey')
-    next()
-}, userController.login);
+router.post('/api/user/login', passport.authenticate('local'), userController.login);
 router.post('/api/user/create', userController.registerUser);
 router.post('/api/post/create', saleController.newPost);
 

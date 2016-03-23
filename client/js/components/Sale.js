@@ -2,8 +2,9 @@
 
 
 import React from 'react';
-import SaleStore from '../stores/LoginStore';
+import LoginStore from '../stores/LoginStore';
 import SaleActions from '../actions/SaleActions';
+import SaleStore from '../stores/SaleStore';
 import {Route, Router, browserHistory, Link} from 'react-router';
 
 
@@ -20,6 +21,7 @@ class Sale extends React.Component {
     this.handleModelChange = this.handleModelChange.bind(this);
     this.handleYearChange = this.handleYearChange.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
+    this.handleCategoryChange = this.handleCategoryChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
@@ -43,11 +45,6 @@ class Sale extends React.Component {
     this.setState({name: this.refs.name.value});
   }
 
-  // Handling the category value change
-  handleCategoryChange() {
-    this.setState({category: this.refs.category.value});
-  }
-
   // Handling the make value change
   handleMakeChange() {
     this.setState({make: this.refs.make.value});
@@ -68,6 +65,11 @@ class Sale extends React.Component {
     this.setState({description: this.refs.description.value});
   }
 
+  // Handling the category value change
+  handleCategoryChange() {
+    this.setState({category: this.refs.menu.value})
+  }
+
   // When change occurs handle state
   onChange(state) {
     this.setState(state);
@@ -75,13 +77,14 @@ class Sale extends React.Component {
     //   this.props.history.push('/');
       // console.log("this.props", this.props);
     // }
-    console.log("Added new new post");
+    console.log("Added new post");
   }
 
   // Handling submit of sale/post info
   handleSubmit(event) {
     event.preventDefault();
-    // Email and Password provided by user
+    let loginState = LoginStore.getState();
+    let userId = loginState.userId;
     let email = this.state.email;
     let name = this.state.name;
     // let category = this.state.category;
@@ -89,13 +92,9 @@ class Sale extends React.Component {
     let model = this.state.model;
     let year = this.state.year;
     let description = this.state.description;
+    let category = this.refs.menu.value;
+    console.log("category", category);
 
-    console.log("email", email);
-    console.log("name", name);
-    console.log("make", make);
-    console.log("model", model);
-    console.log("year", year);
-    console.log("description", description);
     // If no email provided
     if (!email) {
       SaleActions.noEmail();
@@ -109,7 +108,7 @@ class Sale extends React.Component {
 
     // Handling the creation of the new sale post
     if (email && name) {
-      SaleActions.createSale(email, name, make, model, year, description);
+      SaleActions.createSale(userId, email, name, make, model, year, description);
       // this.setState({email: '', password: ''});
       // this._reactInternalInstance._context.history.push('/');
     }
@@ -162,6 +161,16 @@ class Sale extends React.Component {
                                 <textarea name="description" ref="description" value={this.state.description} onChange={this.handleDescriptionChange}placeholder="description">
                                 </textarea>
                             </div>
+                        </div>
+                        <div className="dropdown">
+                          <select className="dropdown-content" ref="menu" onChange={this.handleCategoryChange}>
+                            <option ref="atv" value="ATV">ATV</option>
+                            <option ref="utv" value="UTV">UTV</option>
+                            <option ref="dirt" value="Bike">Dirt Bike</option>
+                            <option ref="jeep" value="Jeep">Jeep</option>
+                            <option ref="jeep" value="Truck">Truck</option>
+                            <option ref="other" value="Other">Other</option>
+                          </select>
                         </div>
                         <button className="ui fluid large black submit button" onClick={this.handleSubmit}>Post Add</button>
                     </div>

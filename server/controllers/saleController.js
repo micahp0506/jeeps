@@ -2,7 +2,9 @@
 
 
 const db = require('../models/');
-db.sequelize.sync();
+db.sequelize.sync().then(()=> {
+    console.log("db synced");
+});
 
 const SaleController = {};
 
@@ -15,8 +17,9 @@ SaleController.newPost = (req, res, done) => {
                     make: req.body.make,
                     model: req.body.model,
                     year: req.body.year,
-                    description: req.body.description
-                }, console.log("post in"));
+                    description: req.body.description,
+                    userId: req.body.userId
+                });
                 post.save()
                     .then(function(thing) {
                         console.log("thing", thing);

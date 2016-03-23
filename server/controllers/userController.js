@@ -13,8 +13,7 @@ UserController.registerUser = (req, res, done) => {
     db.User.findOne({where:{userEmail: req.body.userEmail}})
         .then((existingUser)=> {
             if (existingUser) {
-                res.sendStatus(403);
-                // return done(null, false, res.send('signupMessage', 'That email is already taken.'));
+                return done(null, false, res.send('signupMessage', 'That email is already taken.'));
             } else {
                 let newUser = db.User.build({
                     userEmail: req.body.userEmail,
@@ -22,8 +21,7 @@ UserController.registerUser = (req, res, done) => {
                 });
                 newUser.save()
                     .done(function() {
-                        res.sendStatus(200);
-                        // return done(null)
+                        return done(null)
                     })
                     .catch(function(){
                         return done(null, false, res.status('loginMessage', err));
@@ -38,7 +36,10 @@ UserController.registerUser = (req, res, done) => {
 
 // Controls the logging in of a user
 UserController.login = (req, res, done) => {
-    res.sendStatus(200);
+    db.User.findOne({where:{userEmail: req.body.userEmail}})
+        .then((user) => {
+            res.send(user);
+        })
 }
 
 

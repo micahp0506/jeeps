@@ -9,7 +9,7 @@ class LoginStore {
   constructor() {
     this.bindActions(LoginActions);
     this.email = '';
-    this.password = '';
+    this.userId = '';
     this.helpBlock = '';
     this.emailValidationState = '';
     this.passwordValidationState = '';
@@ -17,11 +17,14 @@ class LoginStore {
   }
 
   // Handling the registration of new user
-  onLoginSuccess(successMessage) {
-    console.log("store this", this);
+  onLoginSuccess(data) {
+    console.log("data", data);
     console.log("user logged in");
     this.emailValidationState = 'has-success';
-    this.helpBlock = successMessage;
+    this.helpBlock = data;
+    this.email = data.userEmail;
+    this.userId = data.userId;
+    console.log("this.userId", this.userId);
     this.loginState = true;
   }
 
@@ -44,7 +47,6 @@ class LoginStore {
     this.passwordValidationState = 'has-error';
     this.helpBlock = 'Please enter a password';
   }
-
 
 }
 

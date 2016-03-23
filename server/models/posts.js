@@ -10,24 +10,22 @@ module.exports = function (sequelize, DataTypes) {
     },
     contactName: DataTypes.STRING,
     contactEmail: DataTypes.STRING,
-    // category: DataTypes.STRING,
+    category: DataTypes.STRING,
     description: DataTypes.STRING,
     // image: DataTypes.BLOB,
     make: DataTypes.STRING,
     model: DataTypes.STRING,
-    year: DataTypes.STRING,
-    // userId: DataTypes.INTEGER
+    year: DataTypes.STRING
   }, {
     tableName: 'posts',
     timestamps: false,
     classMethods: {
-    //   associate: function (models) {
-    //     // associations can be defined here
-    //     Posts.belongsTo(models.User, {foreignKey: 'userId'});
-    //   }
-    // }
+      associate: function (models) {
+        // associations can be defined here
+        Post.belongsTo(models.User, {foreignKey: 'userId'});
+      }
     }
-  });
+    });
 
   return Post;
 };

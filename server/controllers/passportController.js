@@ -8,11 +8,13 @@ db.sequelize.sync();
 
 // Using passport to authenticate the user
 passport.serializeUser(function(user, done) {
+    // console.log("user", user);
     done(null, user.userId);
 });
 
 passport.deserializeUser(function(id, done) {
-    db.User.findById({userId: id}).then(function(user){
+    console.log("id", id);
+    db.User.findOne({where: {userId: id}}).then(function(user){
         done(null, user);
     }).catch(function(err){
         done(err, null);
@@ -25,22 +27,23 @@ passport.use(new LocalStrategy({usernameField: 'userEmail', passwordField: 'user
         db.User.findOne({ where: { userEmail: email }})
             .then(function(user) {
                 if (!user) {
-                    done(null, false, { message: 'Unknown user' });
+                    return done(null, false, { message: 'Unknown user' });
                 } else {
                     user.authenticate(password, (err, valid) => {
                         if (err) throw err;
 
                         if (valid) {
-                            console.log("User loggged in");
+                            console.log("User Authenticated");
                             return done(null, user);
                         } else {
                             return done();
                         }
                     });
-                    done(null, user);
+                    return done(null, user);
                 }
             }).catch(function(err){
-                    done(err);
+                console.log("err", err);
+                    return done(err);
             });
 }));
 
