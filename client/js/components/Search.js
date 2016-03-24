@@ -4,12 +4,14 @@
 import React from 'react';
 import SearchActions from '../actions/SearchActions';
 import SearchStore from '../stores/SearchStore';
+import Base64 from 'base-64';
 
 // Creating Search to handle actions and store
 class Search extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state = SearchStore.getState();
         this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
         this.onChange = this.onChange.bind(this);
     }
@@ -37,14 +39,64 @@ class Search extends React.Component {
     }
 
     render() {
-        return (
-            <div>
-                <h1>Search Page</h1>
-                <button onClick={this.handleSearchSubmit}>Search</button>
-            </div>
-        )
+        if (this.state.searchState) {
+            console.log("this.state.searchResults", this.state.searchResults);
+            console.log("this.props", this.props);
+            return (
+                <div>
+                    {this.state.searchResults.map((post) => {
+                        let image64 = Base64.encode(post.image);
+                        console.log("image", image64);
+                        let image = 'data:image/png;base64,' + image64;
+                        return (
+                            <div className="item" key={post.postId}>
+                                <div>
+                                    <img src={image}></img>
+                                </div>
+                                <div className="content">
+                                  <span>Make:  </span>
+                                  {post.make}
+                                </div>
+                                <div className="content">
+                                  <span>Model:  </span>
+                                  {post.model}
+                                </div>
+                                <div className="content">
+                                  <span>Year:  </span>
+                                  {post.year}
+                                </div>
+                                <div className="content">
+                                  <span>Price:  </span>
+                                  {post.price}
+                                </div>
+                                <div className="content">
+                                  <span>Description:  </span>
+                                  {post.description}
+                                </div>
+                                <div className="content">
+                                  <span>Contact Name:  </span>
+                                  {post.contactName}
+                                </div>
+                                <div className="content">
+                                  <span>Contact Email:  </span>
+                                  {post.contactEmail}
+                                </div>
+                            </div>
+                        )
+                    })}
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                    <h1>Search for listing</h1>
+                    <button onClick={this.handleSearchSubmit}>Search</button>
+                </div>
+            )
+        }
+
     }
 }
 
-
 export default Search;
+

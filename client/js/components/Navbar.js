@@ -25,6 +25,7 @@ class Navbar extends React.Component{
     }
 
     onChange(state){
+        console.log("state", state);
         this.setState(state)
     }
 
