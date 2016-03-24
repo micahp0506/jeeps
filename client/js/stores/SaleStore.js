@@ -26,7 +26,6 @@ class SaleStore {
 
   // Handling the failure to post of a new add
   onSaleFail(errorMessage) {
-    console.log("error", errorMessage);
     this.emailValidationState = 'has-error';
     this.helpBlock = errorMessage;
     console.log("Something went wrong. Please try again.");

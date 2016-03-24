@@ -6,13 +6,14 @@ import {Route, Router, browserHistory, Link} from 'react-router';
 import LoginStore from '../stores/LoginStore';
 
 
-
+// Creating Navbar to handle navigation
 class Navbar extends React.Component{
 
     constructor(props) {
         super(props);
         this.state = LoginStore.getState();
         this.onChange = this.onChange.bind(this);
+        this.handleLogout = this.handleLogout.bind(this)
     }
 
     componentDidMount() {
@@ -27,13 +28,17 @@ class Navbar extends React.Component{
         this.setState(state)
     }
 
+    handleLogout() {
+        console.log("handle logout and move to index");
+    }
+
         render() {
             if (this.state.loginState) {
             return(
                 <div className="ui inverted menu navbar ">
                     <a href="#" className="brand item logo-container">Jeepers</a>
                     <Link to={'/'} className="item" id="home">Home</Link>
-                    <Link to={'/login'} className="item" id="login">Log Out</Link>
+                    <a href="#" className="item" id="logout"  onClick={this.handleLogout}>Log Out</a>
                 </div>
             )
             } else {

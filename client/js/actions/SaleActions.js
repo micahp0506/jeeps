@@ -6,7 +6,7 @@ import $ from '../bower_components/jquery/dist/jquery.min.js';
 import LoginStore from '../stores/LoginStore';
 
 
-// Creating constructor to handle different sale of vehicle
+// Creating constructor to handle login action
 class SaleActions {
   constructor() {
     this.generateActions(
@@ -17,7 +17,7 @@ class SaleActions {
     );
   }
 
-  // Making Get call to DB to get user info
+  // Sending new add information to DB
   createSale(id, email, name, make, model, year, price, description, category, image) {
     $.ajax({
       type: 'POST',

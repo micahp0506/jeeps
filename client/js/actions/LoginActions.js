@@ -5,7 +5,7 @@ import alt from '../utils/alt';
 import $ from '../bower_components/jquery/dist/jquery.min.js';
 
 
-// Creating constructor to handle different states
+// Creating constructor to handle login action
 class LoginActions {
   constructor() {
     this.generateActions(
