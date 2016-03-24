@@ -18,7 +18,7 @@ class SaleActions {
   }
 
   // Making Get call to DB to get user info
-  createSale(id, email, name, make, model, year, description, category) {
+  createSale(id, email, name, make, model, year, price, description, category, image) {
     $.ajax({
       type: 'POST',
       url: '/api/post/create',
@@ -29,8 +29,10 @@ class SaleActions {
         make: make,
         model: model,
         year: year,
+        price: price,
         description: description,
-        category: category
+        category: category,
+        image: image
       }
     })
       .done((data) => {

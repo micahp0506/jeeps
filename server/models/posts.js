@@ -10,12 +10,14 @@ module.exports = function (sequelize, DataTypes) {
     },
     contactName: DataTypes.STRING,
     contactEmail: DataTypes.STRING,
-    category: DataTypes.STRING,
-    description: DataTypes.STRING,
-    // image: DataTypes.BLOB,
     make: DataTypes.STRING,
     model: DataTypes.STRING,
-    year: DataTypes.STRING
+    year: DataTypes.STRING,
+    price: DataTypes.STRING,
+    description: DataTypes.STRING,
+    category: DataTypes.STRING,
+    image: DataTypes.BLOB
+
   }, {
     tableName: 'posts',
     timestamps: false,

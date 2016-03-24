@@ -22,6 +22,7 @@ class Sale extends React.Component {
     this.handleMakeChange = this.handleMakeChange.bind(this);
     this.handleModelChange = this.handleModelChange.bind(this);
     this.handleYearChange = this.handleYearChange.bind(this);
+    this.handlePriceChange = this.handlePriceChange.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
     this.handleCategoryChange = this.handleCategoryChange.bind(this);
     this.onDrop = this.onDrop.bind(this);
@@ -63,6 +64,11 @@ class Sale extends React.Component {
     this.setState({year: this.refs.year.value});
   }
 
+  // Handling the price change
+  handlePriceChange() {
+    this.setState({price: this.refs.price.value});
+  }
+
   // Handling the description value change
   handleDescriptionChange() {
     this.setState({description: this.refs.description.value});
@@ -75,12 +81,9 @@ class Sale extends React.Component {
   // Getting the images that were loaded
   onDrop(images) {
     console.log("Received files:", images);
-    this.setState({image: images});
+    this.setState({image: images[0].name});
+    console.log("image name", images[0].name);
   }
-  // onDrop(images) {
-  //     console.log('Received files: ', images);
-  // }
-
 
   // When change occurs handle state
   onChange(state) {
@@ -102,6 +105,7 @@ class Sale extends React.Component {
     let make = this.state.make;
     let model = this.state.model;
     let year = this.state.year;
+    let price = this.state.price;
     let description = this.state.description;
     let category = this.refs.menu.value;
     let image = this.state.image;
@@ -119,7 +123,7 @@ class Sale extends React.Component {
 
     // Handling the creation of the new sale post
     if (email && name) {
-      SaleActions.createSale(userId, email, name, make, model, year, description, category, image);
+      SaleActions.createSale(userId, email, name, make, model, year, price, description, category, image);
       // this.setState({email: '', password: ''});
       // this._reactInternalInstance._context.history.push('/');
     }
@@ -169,6 +173,12 @@ class Sale extends React.Component {
                         </div>
                         <div className="field">
                             <div className="ui left icon input">
+                                <input type="text" name="price" ref="price" value={this.state.price} onChange={this.handlePriceChange}placeholder="Price">
+                                </input>
+                            </div>
+                        </div>
+                        <div className="field">
+                            <div className="ui left icon input">
                                 <textarea name="description" ref="description" value={this.state.description} onChange={this.handleDescriptionChange}placeholder="description">
                                 </textarea>
                             </div>
@@ -184,7 +194,7 @@ class Sale extends React.Component {
                           </select>
                         </div>
                         <div>
-                          <Dropzone onDrop={this.onDrop}>
+                          <Dropzone value={this.state.image} onDrop={this.onDrop}>
                             <div>Click to add an image.</div>
                           </Dropzone>
                         </div>

@@ -12,14 +12,17 @@ const SaleController = {};
 SaleController.newPost = (req, res, done) => {
     console.log("req.body", req.body);
     let post = db.Post.build({
+                    userId: req.body.userId,
                     contactEmail: req.body.contactEmail,
                     contactName: req.body.contactName,
                     make: req.body.make,
                     model: req.body.model,
                     year: req.body.year,
+                    price: req.body.price,
                     description: req.body.description,
                     category: req.body.category,
-                    userId: req.body.userId
+                    image: req.body.image
+
                 });
                 post.save()
                     .then(function(thing) {
