@@ -80,9 +80,7 @@ class Sale extends React.Component {
   }
   // Getting the images that were loaded
   onDrop(images) {
-    console.log("Received files:", images);
     this.setState({image: images[0].name});
-    console.log("image name", images[0].name);
   }
 
   // When change occurs handle state
