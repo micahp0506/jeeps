@@ -45,13 +45,12 @@ class Search extends React.Component {
             return (
                 <div>
                     {this.state.searchResults.map((post) => {
-                        let image64 = Base64.encode(post.image);
-                        console.log("image", image64);
-                        let image = 'data:image/png;base64,' + image64;
+                        console.log("image", post.image);
+                        let image = 'data:image/png;base64,' + post.image;
                         return (
                             <div className="item" key={post.postId}>
                                 <div>
-                                    <img src={image}></img>
+                                    <img src={uri: image}></img>
                                 </div>
                                 <div className="content">
                                   <span>Make:  </span>
