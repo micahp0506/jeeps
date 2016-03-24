@@ -2,10 +2,12 @@
 
 
 import React from 'react';
+import Dropzone from 'react-dropzone';
+import {Route, Router, browserHistory, Link} from 'react-router';
 import LoginStore from '../stores/LoginStore';
 import SaleActions from '../actions/SaleActions';
 import SaleStore from '../stores/SaleStore';
-import {Route, Router, browserHistory, Link} from 'react-router';
+
 
 
 // Creating Sale to handle actions and store
@@ -22,6 +24,7 @@ class Sale extends React.Component {
     this.handleYearChange = this.handleYearChange.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
     this.handleCategoryChange = this.handleCategoryChange.bind(this);
+    this.onDrop = this.onDrop.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
@@ -69,6 +72,15 @@ class Sale extends React.Component {
   handleCategoryChange() {
     this.setState({category: this.refs.menu.value})
   }
+  // Getting the images that were loaded
+  onDrop(images) {
+    console.log("Received files:", images);
+    this.setState({image: images});
+  }
+  // onDrop(images) {
+  //     console.log('Received files: ', images);
+  // }
+
 
   // When change occurs handle state
   onChange(state) {
@@ -92,6 +104,7 @@ class Sale extends React.Component {
     let year = this.state.year;
     let description = this.state.description;
     let category = this.refs.menu.value;
+    let image = this.state.image;
 
     // If no email provided
     if (!email) {
@@ -106,7 +119,7 @@ class Sale extends React.Component {
 
     // Handling the creation of the new sale post
     if (email && name) {
-      SaleActions.createSale(userId, email, name, make, model, year, description, category);
+      SaleActions.createSale(userId, email, name, make, model, year, description, category, image);
       // this.setState({email: '', password: ''});
       // this._reactInternalInstance._context.history.push('/');
     }
@@ -169,6 +182,11 @@ class Sale extends React.Component {
                             <option ref="jeep" value="Truck">Truck</option>
                             <option ref="other" value="Other">Other</option>
                           </select>
+                        </div>
+                        <div>
+                          <Dropzone onDrop={this.onDrop}>
+                            <div>Click to add an image.</div>
+                          </Dropzone>
                         </div>
                         <button className="ui fluid large black submit button" onClick={this.handleSubmit}>Post Add</button>
                     </div>
