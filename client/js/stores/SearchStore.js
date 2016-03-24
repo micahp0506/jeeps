@@ -13,7 +13,7 @@ class SearchStore {
   }
 
  // Handling successful search
-  onGetShit(results) {
+  onSearchSuccess(results) {
     this.searchState = true;
     this.searchResults = results;
     console.log("results", results);
@@ -21,7 +21,7 @@ class SearchStore {
   }
 
 // Handling the unsuccessful search
-  onGetFail(err) {
+  onSearchFail(err) {
     console.log("Something went wrong. Please try again.");
   }
 }

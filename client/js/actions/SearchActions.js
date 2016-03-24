@@ -9,8 +9,8 @@ import $ from '../bower_components/jquery/dist/jquery.min.js';
 class SearchActions {
   constructor() {
     this.generateActions(
-      'getShit',
-      'getFail'
+      'searchSuccess',
+      'searchFail'
     );
   }
 
@@ -21,10 +21,10 @@ class SearchActions {
         return response.json()
       })
       .then((results) => {
-        this.actions.getShit(results);
+        this.actions.searchSuccess(results);
       })
       .catch((err) => {
-        this.actions.getFail(err);
+        this.actions.searchFail(err);
       });
   }
 }
