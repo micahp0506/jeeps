@@ -1,10 +1,11 @@
 'use strict';
 
 
+import alt from '../utils/alt';
 import React from 'react';
 import SearchActions from '../actions/SearchActions';
 import SearchStore from '../stores/SearchStore';
-import Base64 from 'base-64';
+
 
 // Creating Search to handle actions and store
 class Search extends React.Component {
@@ -12,8 +13,11 @@ class Search extends React.Component {
     constructor(props) {
         super(props);
         this.state = SearchStore.getState();
-        this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
         this.onChange = this.onChange.bind(this);
+        this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
+        this.handleCategoryChange = this.handleCategoryChange.bind(this);
+        this.handleNewSearchSubmit = this.handleNewSearchSubmit.bind(this);
+
     }
 
     // Listening to changes at the store
@@ -28,14 +32,23 @@ class Search extends React.Component {
 
     // When change occurs handle state
     onChange(state) {
-        console.log("state", state);
         this.setState(state);
+    }
+
+    // Handling the category value change
+    handleCategoryChange() {
+        this.setState({category: this.refs.menu.value})
+    }
+
+    // Handling new search submit reseting the SearchStore state
+    handleNewSearchSubmit() {
+        alt.recycle(SearchStore);
     }
 
     // Handling search submit
     handleSearchSubmit() {
-        console.log("search");
-        SearchActions.getPost();
+        let category = this.refs.menu.value;
+        SearchActions.getPost(category);
     }
 
     render() {
@@ -45,12 +58,10 @@ class Search extends React.Component {
             return (
                 <div>
                     {this.state.searchResults.map((post) => {
-                        console.log("image", post.image);
-                        let image = 'data:image/png;base64,' + post.image;
                         return (
                             <div className="item" key={post.postId}>
                                 <div>
-                                    <img src={uri: image}></img>
+                                    <img src="data:image/png;base64,{post.image}"></img>
                                 </div>
                                 <div className="content">
                                   <span>Make:  </span>
@@ -83,12 +94,23 @@ class Search extends React.Component {
                             </div>
                         )
                     })}
+                    <button onClick={this.handleNewSearchSubmit}>New Search</button>
                 </div>
             )
         } else {
             return (
                 <div>
                     <h1>Search for listing</h1>
+                    <div className="dropdown">
+                          <select className="dropdown-content" ref="menu" onChange={this.handleCategoryChange}>
+                            <option ref="atv" value="ATV">ATV</option>
+                            <option ref="utv" value="UTV">UTV</option>
+                            <option ref="dirt" value="Bike">Dirt Bike</option>
+                            <option ref="jeep" value="Jeep">Jeep</option>
+                            <option ref="jeep" value="Truck">Truck</option>
+                            <option ref="other" value="Other">Other</option>
+                          </select>
+                        </div>
                     <button onClick={this.handleSearchSubmit}>Search</button>
                 </div>
             )

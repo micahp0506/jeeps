@@ -3,7 +3,7 @@
 
 import React from 'react';
 import Dropzone from 'react-dropzone';
-import Base64 from 'base-64';
+import base64 from 'base-64';
 import {Route, Router, browserHistory, Link} from 'react-router';
 import LoginStore from '../stores/LoginStore';
 import SaleActions from '../actions/SaleActions';
@@ -79,8 +79,10 @@ class Sale extends React.Component {
   handleCategoryChange() {
     this.setState({category: this.refs.menu.value})
   }
+
   // Getting the images that were loaded
   onDrop(images) {
+    console.log("images", images);
     this.setState({image: images[0].name});
   }
 
@@ -107,7 +109,7 @@ class Sale extends React.Component {
     let price = this.state.price;
     let description = this.state.description;
     let category = this.refs.menu.value;
-    let image = Base64.encode(this.state.image);
+    let image = this.state.image;
 
     // If no email provided
     if (!email) {

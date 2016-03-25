@@ -4,6 +4,7 @@
 import React from 'react';
 import {Route, Router, browserHistory, Link} from 'react-router';
 import LoginStore from '../stores/LoginStore';
+import LoginActions from '../actions/LoginActions'
 
 
 // Creating Navbar to handle navigation
@@ -31,6 +32,10 @@ class Navbar extends React.Component{
 
     handleLogout() {
         console.log("handle logout and move to index");
+        console.log("this", this);
+        LoginActions.logoutUser(() => {
+            this._reactInternalInstance.history.push('/');
+        });
     }
 
         render() {

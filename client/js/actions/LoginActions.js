@@ -10,6 +10,7 @@ class LoginActions {
   constructor() {
     this.generateActions(
       'loginSuccess',
+      'logoutSuccess',
       'loginFail',
       'noEmail',
       'noPassword',
@@ -30,6 +31,11 @@ class LoginActions {
       .fail((err) => {
         this.actions.loginFail(err);
       });
+  }
+
+  logoutUser(cb) {
+    console.log("logout in");
+    this.actions.logoutSuccess(cb);
   }
 }
 

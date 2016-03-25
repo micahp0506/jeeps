@@ -10,13 +10,15 @@ class SearchActions {
   constructor() {
     this.generateActions(
       'searchSuccess',
-      'searchFail'
+      'searchFail',
+      'setSearchState'
     );
   }
 
   // Sending new add information to DB
-  getPost() {
-    fetch('/api/search/all')
+  getPost(category) {
+    console.log("category search actions", category);
+    fetch(`/api/search/${category}`)
       .then((response) => {
         return response.json()
       })

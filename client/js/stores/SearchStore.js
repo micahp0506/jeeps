@@ -24,6 +24,13 @@ class SearchStore {
   onSearchFail(err) {
     console.log("Something went wrong. Please try again.");
   }
+
+
+  setSearchState() {
+    console.log("in search store");
+    this.searchState = false;
+    console.log("this", this);
+  }
 }
 
 export default alt.createStore(SearchStore);
