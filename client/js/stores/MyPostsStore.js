@@ -2,29 +2,28 @@
 
 
 import alt from '../utils/alt';
-import SearchActions from '../actions/SearchActions';
+import MyPostsActions from '../actions/MyPostsActions';
 
 // Creating search store constructor
-class SearchStore {
+class MyPostsStore {
   constructor() {
-    this.bindActions(SearchActions);
+    this.bindActions(MyPostsActions);
     this.searchState = false;
     this.searchResults = null;
   }
 
  // Handling successful search
-  onSearchSuccess(results) {
+  onMyPostsSuccess(results) {
+    console.log("this", this);
+    console.log("results", results);
     this.searchState = true;
     this.searchResults = results;
-    console.log("results", results);
-    console.log("Search Success");
   }
 
 // Handling the unsuccessful search
-  onSearchFail(err) {
+  onMyPostsFail(err) {
     console.log("Something went wrong. Please try again.");
   }
 }
 
-export default alt.createStore(SearchStore);
-
+export default alt.createStore(MyPostsStore);

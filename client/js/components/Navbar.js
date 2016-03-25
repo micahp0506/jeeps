@@ -4,8 +4,9 @@
 import React from 'react';
 import {Route, Router, browserHistory, Link} from 'react-router';
 import LoginStore from '../stores/LoginStore';
-import LoginActions from '../actions/LoginActions'
-
+import LoginActions from '../actions/LoginActions';
+import MyPostsActions from '../actions/MyPostsActions';
+import MyPostsStore from '../stores/MyPostsStore';
 
 // Creating Navbar to handle navigation
 class Navbar extends React.Component{
@@ -14,7 +15,8 @@ class Navbar extends React.Component{
         super(props);
         this.state = LoginStore.getState();
         this.onChange = this.onChange.bind(this);
-        this.handleLogout = this.handleLogout.bind(this)
+        this.handleLogout = this.handleLogout.bind(this);
+        this.handleMyPosts = this.handleMyPosts.bind(this);
     }
 
     componentDidMount() {
@@ -30,6 +32,12 @@ class Navbar extends React.Component{
         this.setState(state)
     }
 
+    handleMyPosts() {
+        let login = LoginStore.getState();
+        let id = login.userId;
+        MyPostsActions.getMyPosts(id);
+    }
+
     handleLogout() {
         LoginActions.logoutUser(() => {
             this._reactInternalInstance.history.push('/');
@@ -43,6 +51,7 @@ class Navbar extends React.Component{
                     <a href="#" className="brand item logo-container">Jeepers</a>
                     <Link to={'/'} className="item" id="home">Home</Link>
                     <a href="#" className="item" id="logout"  onClick={this.handleLogout}>Log Out</a>
+                    <Link to={'/myposts'} className="item" id="myposts" onClick={this.handleMyPosts}>My Posts</Link>
                 </div>
             )
             } else {

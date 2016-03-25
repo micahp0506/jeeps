@@ -8,12 +8,10 @@ db.sequelize.sync();
 
 // Using passport to authenticate the user
 passport.serializeUser(function(user, done) {
-    // console.log("user", user);
     done(null, user.userId);
 });
 
 passport.deserializeUser(function(id, done) {
-    console.log("id", id);
     db.User.findOne({where: {userId: id}}).then(function(user){
         done(null, user);
     }).catch(function(err){

@@ -18,14 +18,11 @@ module.exports = function (sequelize, DataTypes) {
     timestamps: false,
     classMethods: {
       generateHash: function(userPassword, done) {
-        console.log("in");
             return bcrypt.hashSync(userPassword, bcrypt.genSaltSync(8), null);
       }
     },
     instanceMethods: {
       authenticate: function(userPassword, cb) {
-        console.log("in2");
-        console.log(">>>>>>>>>", this.userPassword);
             return bcrypt.compare(userPassword, this.userPassword, cb);
       }
     }

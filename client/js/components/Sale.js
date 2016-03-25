@@ -1,4 +1,4 @@
-'use strict';
+  'use strict';
 
 
 import React from 'react';
@@ -83,7 +83,9 @@ class Sale extends React.Component {
   // Getting the images that were loaded
   onDrop(images) {
     console.log("images", images);
-    this.setState({image: images[0].name});
+    let image = base64.encode(images[0]);
+    console.log("image", image);
+    this.setState({image: image});
   }
 
   // When change occurs handle state

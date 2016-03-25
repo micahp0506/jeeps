@@ -10,8 +10,7 @@ class SearchActions {
   constructor() {
     this.generateActions(
       'searchSuccess',
-      'searchFail',
-      'setSearchState'
+      'searchFail'
     );
   }
 

@@ -10,7 +10,6 @@ const SaleController = {};
 
 // Controls the posting of a new add
 SaleController.newPost = (req, res, done) => {
-    console.log("req.body", req.body);
     let post = db.Post.build({
                     userId: req.body.userId,
                     contactEmail: req.body.contactEmail,
@@ -26,7 +25,6 @@ SaleController.newPost = (req, res, done) => {
                 });
                 post.save()
                     .then(function(thing) {
-                        console.log("thing", thing);
                         res.sendStatus(200);
                         // return done(null)
                     })
