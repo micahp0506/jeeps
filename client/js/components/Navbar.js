@@ -31,8 +31,6 @@ class Navbar extends React.Component{
     }
 
     handleLogout() {
-        console.log("handle logout and move to index");
-        console.log("this", this);
         LoginActions.logoutUser(() => {
             this._reactInternalInstance.history.push('/');
         });
