@@ -2,6 +2,7 @@
 
 
 import React from 'react';
+import alt from '../utils/alt';
 import {Route, Router, browserHistory, Link} from 'react-router';
 import LoginStore from '../stores/LoginStore';
 import LoginActions from '../actions/LoginActions';
@@ -39,9 +40,13 @@ class Navbar extends React.Component{
     }
 
     handleLogout() {
-        LoginActions.logoutUser(() => {
-            this._reactInternalInstance.history.push('/');
-        });
+        console.log("this", this);
+        alt.recycle(LoginStore);
+        this._reactInternalInstance._context.history.push('/');
+        // LoginActions.logoutUser(() => {
+        //     console.log("this", this);
+        //     this._reactInternalInstance.history.push('/');
+        // });
     }
 
         render() {

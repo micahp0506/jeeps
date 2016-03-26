@@ -36,9 +36,6 @@ class LoginStore {
     console.log("Email or password is not correct. Please try again.");
   }
 
-  onLogoutSuccess() {
-    this.loginState = false;
-  }
   // Handling no email provided by user
   onnoEmail() {
     this.emailValidationState = 'has-error';

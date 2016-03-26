@@ -10,9 +10,10 @@ class MyPostsStore {
     this.bindActions(MyPostsActions);
     this.searchState = false;
     this.searchResults = null;
+    this.deletionMessage = null;
   }
 
- // Handling successful search
+  // Handling successful search
   onMyPostsSuccess(results) {
     console.log("this", this);
     console.log("results", results);
@@ -20,9 +21,19 @@ class MyPostsStore {
     this.searchResults = results;
   }
 
-// Handling the unsuccessful search
+  // Handling the unsuccessful search
   onMyPostsFail(err) {
     console.log("Something went wrong. Please try again.");
+  }
+
+  // Handling successful deletion of post
+  onDeleteSuccess() {
+    this.deletionMessage = 'Deletion successful.'
+  }
+
+  // Handling the unsuccessful deletion of post
+  onDeleteFail() {
+    this.deletionMessage = 'Deletion failed, please try again.'
   }
 }
 

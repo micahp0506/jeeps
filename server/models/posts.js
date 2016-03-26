@@ -16,7 +16,7 @@ module.exports = function (sequelize, DataTypes) {
     price: DataTypes.STRING,
     description: DataTypes.STRING,
     category: DataTypes.STRING,
-    image: DataTypes.STRING
+    image: DataTypes.BLOB
 
   }, {
     tableName: 'posts',

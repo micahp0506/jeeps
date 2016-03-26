@@ -15,6 +15,7 @@ class MyPosts extends React.Component {
         this.state = MyPostsStore.getState();
         console.log("this.state", this.state);
         this.onChange = this.onChange.bind(this);
+        this.handleDeletePost = this.handleDeletePost.bind(this);
     }
     // Listening to changes at the store
     componentDidMount() {
@@ -30,6 +31,11 @@ class MyPosts extends React.Component {
     onChange(state) {
         console.log("state", state);
         this.setState(state);
+    }
+
+    // Handling deletion of post
+    handleDeletePost(e) {
+        MyPostsActions.deletePost(e.target.value);
     }
 
 
@@ -72,6 +78,7 @@ class MyPosts extends React.Component {
                               <span>Contact Email:  </span>
                               {post.contactEmail}
                             </div>
+                            <button value={post.postId} onClick={this.handleDeletePost}>Delete Post</button>
                         </div>
                     )
                 })}

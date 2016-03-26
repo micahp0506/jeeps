@@ -19,6 +19,7 @@ class SaleActions {
 
   // Sending new add information to DB
   createSale(id, email, name, make, model, year, price, description, category, image) {
+    console.log("image", image);
     $.ajax({
       type: 'POST',
       url: '/api/post/create',

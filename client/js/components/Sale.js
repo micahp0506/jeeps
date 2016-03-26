@@ -3,7 +3,6 @@
 
 import React from 'react';
 import Dropzone from 'react-dropzone';
-import base64 from 'base-64';
 import {Route, Router, browserHistory, Link} from 'react-router';
 import LoginStore from '../stores/LoginStore';
 import SaleActions from '../actions/SaleActions';
@@ -83,9 +82,10 @@ class Sale extends React.Component {
   // Getting the images that were loaded
   onDrop(images) {
     console.log("images", images);
-    let image = base64.encode(images[0]);
+    let image = images[0];
     console.log("image", image);
-    this.setState({image: image});
+    // this.setState({image: image});
+    // console.log("this.state.image", this.state.image);
   }
 
   // When change occurs handle state
@@ -127,8 +127,6 @@ class Sale extends React.Component {
     // Handling the creation of the new sale post
     if (email && name) {
       SaleActions.createSale(userId, email, name, make, model, year, price, description, category, image);
-      // this.setState({email: '', password: ''});
-      // this._reactInternalInstance._context.history.push('/');
     }
   }
 
