@@ -36,6 +36,7 @@ node_modules
 client/public/js/bundle.js
 client/public/js/bundle.js.map
 client/public/js/vendor.js
+client/public/js/vendor.bundle.js
 
 # Ignoring bower_components
 client/js/bower_components
