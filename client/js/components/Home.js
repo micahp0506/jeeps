@@ -1,8 +1,6 @@
 'use strict';
 
 
-'use strict'
-
 import React from 'react';
 import {Route, Router, browserHistory, Link} from 'react-router';
 

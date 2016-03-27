@@ -43,32 +43,59 @@ class Navbar extends React.Component{
         console.log("this", this);
         alt.recycle(LoginStore);
         this._reactInternalInstance._context.history.push('/');
-        // LoginActions.logoutUser(() => {
-        //     console.log("this", this);
-        //     this._reactInternalInstance.history.push('/');
-        // });
     }
 
         render() {
             if (this.state.loginState) {
             return(
-                <div className="ui inverted menu navbar ">
-                    <a href="#" className="brand item logo-container">Jeepers</a>
-                    <Link to={'/'} className="item" id="home">Home</Link>
-                    <a href="#" className="item" id="logout"  onClick={this.handleLogout}>Log Out</a>
-                    <Link to={'/myposts'} className="item" id="myposts" onClick={this.handleMyPosts}>My Posts</Link>
-                </div>
+                <nav className="navbar navbar-inverse navbar-fixed-top">
+                    <div className="container">
+                        <div className="navbar-header">
+                            <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span className="sr-only">Toggle navigation</span>
+                            <span className="icon-bar"></span>
+                            <span className="icon-bar"></span>
+                            <span className="icon-bar"></span>
+                            </button>
+                            <a className="navbar-brand" href="#">Jeepers</a>
+                        </div>
+                        <div id="navbar" className="collapse navbar-collapse">
+                            <ul className="nav navbar-nav">
+                                <li><Link to={'/'}>Home</Link></li>
+                                <li><a href="#about" onClick={this.handleLogout}>Log Out</a></li>
+                                <li><Link to={'/myposts'} onClick={this.handleMyPosts}>My Posts</Link></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
             )
             } else {
             return (
-                <div className="ui inverted menu navbar ">
-                    <a href="#" className="brand item logo-container">Jeepers</a>
-                    <Link to={'/'} className="item" id="home">Home</Link>
-                    <Link to={'/login'} className="item" id="login">Log In</Link>
-                </div>
+                <nav className="navbar navbar-inverse navbar-fixed-top">
+                    <div className="container">
+                        <div className="navbar-header">
+                            <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span className="sr-only">Toggle navigation</span>
+                            <span className="icon-bar"></span>
+                            <span className="icon-bar"></span>
+                            <span className="icon-bar"></span>
+                            </button>
+                            <a className="navbar-brand" href="#">Jeepers</a>
+                        </div>
+                        <div id="navbar" className="collapse navbar-collapse">
+                            <ul className="nav navbar-nav">
+                                <li><Link to={'/'}>Home</Link></li>
+                                <li><Link to={'/login'}>Log In/Register</Link></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
             )
             }
         }
 };
+
+
+
 
 export default Navbar;

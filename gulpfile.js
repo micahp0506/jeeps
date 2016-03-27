@@ -34,11 +34,11 @@ const dependencies = [
  */
 gulp.task('vendor', function() {
   return gulp.src([
-    'bower_components/jquery/dist/jquery.js',
-    'bower_components/semantic/dist/semantic.js',
-    'bower_components/bootstrap/dist/js/bootstrap.js',
-    'bower_components/magnific-popup/dist/jquery.magnific-popup.js',
-    'bower_components/toastr/toastr.js'
+    'client/js/bower_components/jquery/dist/jquery.js',
+    'client/js/bower_components/semantic/dist/semantic.js',
+    'client/js/bower_components/bootstrap/dist/js/bootstrap.js',
+    'client/js/bower_components/magnific-popup/dist/jquery.magnific-popup.js',
+    'client/js/bower_components/toastr/toastr.js'
   ]).pipe(concat('vendor.js'))
     .pipe(gulpif(production, uglify({ mangle: false })))
     .pipe(gulp.dest('client/public/js'));
@@ -111,18 +111,18 @@ gulp.task('browserify-watch', ['browserify-vendor'], function() {
  | Compile LESS stylesheets.
  |--------------------------------------------------------------------------
  */
-// gulp.task('styles', function() {
-//   return gulp.src('app/stylesheets/main.less')
-//     .pipe(plumber())
-//     .pipe(less())
-//     .pipe(autoprefixer())
-//     .pipe(gulpif(production, cssmin()))
-//     .pipe(gulp.dest('public/css'));
-// });
+gulp.task('styles', function() {
+  return gulp.src('client/stylesheets/main.less')
+    .pipe(plumber())
+    .pipe(less())
+    .pipe(autoprefixer())
+    .pipe(gulpif(production, cssmin()))
+    .pipe(gulp.dest('client/public/css'));
+});
 
-// gulp.task('watch', function() {
-//   gulp.watch('app/stylesheets/**/*.less', ['styles']);
-// });
+gulp.task('watch', function() {
+  gulp.watch('client/stylesheets/**/*.less', ['styles']);
+});
 
-gulp.task('default', ['vendor', 'browserify-watch']);
-gulp.task('build', ['vendor', 'browserify']);
+gulp.task('default', ['styles', 'vendor', 'browserify-watch', 'watch']);
+gulp.task('build', ['styles', 'vendor', 'browserify']);

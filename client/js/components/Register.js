@@ -51,7 +51,6 @@ class Register extends React.Component {
     this.setState(state);
     if (this.state.registerState) {
       this.props.history.push('/');
-      // console.log("this.props", this.props);
     }
   }
 
@@ -66,7 +65,6 @@ class Register extends React.Component {
     // If no email provided
     if (!email) {
       RegisterActions.noEmail();
-      // this.refs.email.getDOMNode().focus();
     }
 
     // If no password provided
@@ -82,49 +80,22 @@ class Register extends React.Component {
     // Handling registration of new user
     if (email && password) {
       RegisterActions.addUser(email, password);
-      // this.setState({email: '', password: '', confirmPassword: ''});
-      // this._reactInternalInstance._context.history.push('/');
     }
   }
 
   // Rendering HTML
   render() {
     return (
-        <div className="ui middle aligned center aligned grid">
-            <div className="column">
-                <h2 className="ui black image header">
-                    <div className="content">
-                        Register as a New User
-                    </div>
-                </h2>
-                <form className="ui large form">
-                    <div className="ui stacked segment">
-                        <div className="field">
-                            <div className="ui left icon input">
-                                <i className="user icon"></i>
-                                <input type="text" ref="email" name="email" value={this.state.email} onChange={this.handleEmailChange} placeholder="E-mail address">
-                                </input>
-                            </div>
-                        </div>
-                        <div className="field">
-                            <div className="ui left icon input">
-                                <i className="lock icon"></i>
-                                <input type="password" ref="password" name="password" value={this.state.password} onChange={this.handlePasswordChange} placeholder="Password">
-                                </input>
-                            </div>
-                        </div>
-                        <div className="field">
-                            <div className="ui left icon input">
-                                <i className="lock icon"></i>
-                                <input type="password" ref="confirmPassword" name="confirmPassword" value={this.state.confirmPassword} onChange={this.handleConfirmPasswordChange} placeholder="Confirm Password">
-                                </input>
-                            </div>
-                        </div>
-                        <button className="ui fluid large black submit button" onClick={this.handleSubmit}>Register & Log In</button>
-                    </div>
-                    <div className="ui error message"></div>
-                </form>
-            </div>
+        <div className="login-container">
+            <form className="form-signin">
+                <h2 className="form-signin-heading">Please Register</h2>
+                <label className="sr-only">Email Address</label>
+                <input type="email" id="inputEmail" ref="email" className="form-control" placeholder="Email Address" required autofocus value={this.state.email} onChange={this.handleEmailChange}></input>
+                <label className="sr-only">Password</label>
+                <input type="password" id="inputPassword" ref="password" className="form-control" placeholder="Password" required value={this.state.password} onChange={this.handlePasswordChange}></input>
+                <input type="password" id="inputPassword" ref="confirmPassword" className="form-control" placeholder="Confirm Password" required value={this.state.confirmPassword} onChange={this.handleConfirmPasswordChange}></input>
+                <button className="btn btn-lg btn-primary btn-block" onClick={this.handleSubmit} type="submit">Sign in</button>
+            </form>
         </div>
     )
   }

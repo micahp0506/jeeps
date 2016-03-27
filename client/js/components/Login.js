@@ -68,49 +68,30 @@ class Login extends React.Component {
     // Handling login of user
     if (email && password) {
       LoginActions.loginUser(email, password);
-      // this.setState({email: '', password: ''});
-      // this._reactInternalInstance._context.history.push('/');
     }
   }
 
 
   render() {
     return (
-        <div className="ui middle aligned center aligned grid">
-            <div className="column">
-                <h2 className="ui black image header">
-                    <div className="content">
-                        Log-in to your account
-                    </div>
-                </h2>
-                <form className="ui large form">
-                    <div className="ui stacked segment">
-                        <div className="field">
-                            <div className="ui left icon input">
-                                <i className="user icon"></i>
-                                <input type="text" name="email" ref="email"value={this.state.email} onChange={this.handleEmailChange}placeholder="E-mail address">
-                                </input>
-                            </div>
-                        </div>
-                        <div className="field">
-                            <div className="ui left icon input">
-                                <i className="lock icon"></i>
-                                <input type="password" name="password" ref="password" value={this.state.password} onChange={this.handlePasswordChange}placeholder="Password">
-                                </input>
-                            </div>
-                        </div>
-                        <button className="ui fluid large black submit button" onClick={this.handleSubmit}>Login</button>
-                    </div>
-                    <div className="ui error message"></div>
-                </form>
-            <div className="ui message">
-                New to us? <Link to={'/register'}>Sign Up</Link>
-            </div>
+        <div className="login-container">
+            <form className="form-signin">
+                <h2 className="form-signin-heading">Please sign in</h2>
+                <label className="sr-only">Email address</label>
+                <input type="email" id="inputEmail" ref="email" className="form-control" placeholder="Email address" required autofocus value={this.state.email} onChange={this.handleEmailChange}></input>
+                <label className="sr-only">Password</label>
+                <input type="password" id="inputPassword" ref="password" className="form-control" placeholder="Password" required value={this.state.password} onChange={this.handlePasswordChange}></input>
+                <div className="ui message">New to us? <Link to={'/register'}>Sign Up</Link></div>
+                <button className="btn btn-lg btn-primary btn-block" onClick={this.handleSubmit} type="submit">Sign in</button>
+            </form>
         </div>
-    </div>
     )
   }
 }
+
+
+
+
 
 
 export default Login;

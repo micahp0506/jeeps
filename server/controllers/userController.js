@@ -21,7 +21,7 @@ UserController.registerUser = (req, res, done) => {
                 });
                 newUser.save()
                     .done(function() {
-                        return done(null)
+                        return done('registerMesage', 'New user created.')
                     })
                     .catch(function(){
                         return done(null, false, res.status('loginMessage', err));
