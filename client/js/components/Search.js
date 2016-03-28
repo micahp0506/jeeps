@@ -60,46 +60,18 @@ class Search extends React.Component {
                     {this.state.searchResults.map((post) => {
                         console.log("post", post);
                         return (
-                            <div className="post" key={post.postId}>
-                                <div>
-                                    <img className="image" src={"data:image/png;base64," + post.image }></img>
-                                </div>
-                                <div className="make">
-                                  <span>Make:  </span>
-                                  {post.make}
-                                </div>
-                                <div className="model">
-                                  <span>Model:  </span>
-                                  {post.model}
-                                </div>
-                                <div className="year">
-                                  <span>Year:  </span>
-                                  {post.year}
-                                </div>
-                                <div className="price">
-                                  <span>Price:$  </span>
-                                  {post.price}
-                                </div>
-                                <div className="description">
-                                  <span>Description:  </span>
-                                  {post.description}
-                                </div>
-                                <div className="content">
-                                  <span>Contact Name:  </span>
-                                  {post.contactName}
-                                </div>
-                                <div className="content">
-                                  <span>Contact Email:  </span>
-                                  {post.contactEmail}
-                                </div>
-                                <div className="content">
-                                  <span>Location:  </span>
-                                  {post.location}
-                                </div>
+                            <div className="item" key={post.postId}>
+                                <span className="content listing">
+                                    <span className="listing-price">$ {post.price}</span>
+                                    <span className="listing-title">{post.year} {post.make} {post.model}</span>
+                                    <span className="listing-description">{post.description}</span>
+                                    <span className="listing-contact">Contact: {post.contactName} at {post.contactEmail}</span>
+                                    <span>Location: {post.location}</span>
+                                </span>
                             </div>
                         )
                     })}
-                    <button onClick={this.handleNewSearchSubmit}>New Search</button>
+                    <button className="newSearch" onClick={this.handleNewSearchSubmit}>New Search</button>
                 </div>
             )
         } else {
@@ -107,8 +79,8 @@ class Search extends React.Component {
                 <div className="search">
                     <h1 className="searchTitle">Search for listing</h1>
                     <div className="form-group-search">
-                        <label className="col-sm-2 control-label category">Choose Category</label>
-                        <div className="col-sm-3">
+                        <label className="control-label category">Choose Category</label>
+                        <div className="">
                             <select className="form-control inputstl" id="expertise" ref="menu" onChange={this.handleCategoryChange}>
                                     <option ref="atv" value="ATV">ATV</option>
                                     <option ref="utv" value="UTV">UTV</option>
