@@ -49,12 +49,12 @@ class MyPosts extends React.Component {
                         <div className="item" key={post.postId}>
                             <span className="content listing">
                                 <span className="listing-price">$ {post.price}</span>
-                                <span className="listing-title">{post.make} {post.model} {post.year}</span>
+                                <span className="listing-title">{post.year} {post.make} {post.model}</span>
                                 <span className="listing-description">{post.description}</span>
-                                <span className="listing-contact">{post.contactName} {post.contactEmail}</span>
-                                <span className="listing-location">{post.location}</span>
+                                <span className="listing-contact">Contact: {post.contactName} at {post.contactEmail}</span>
+                                <span>Location: {post.location}</span>
                             </span>
-                            <button value={post.postId} onClick={this.handleDeletePost}>Delete Post</button>
+                            <button className="btn btn-danger delete" value={post.postId} onClick={this.handleDeletePost}>Delete Post</button>
                         </div>
                     )
                 })}
