@@ -6694,11 +6694,18 @@ url("http://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.5.4/bootstrap-sele
   padding: 15px;
   margin: 0 auto;
   margin-top: 50px;
+  background: #EEE;
 }
-.header {
+.navbar {
+  opacity: .5;
+}
+.navbar-inverse {
+  border: none;
+}
+.navbar-inverse .navbar-brand {
   color: #EEE;
 }
-.message {
+.navbar-inverse .navbar-nav > li > a {
   color: #EEE;
 }
 .form-signin .form-signin-heading,
@@ -6735,6 +6742,10 @@ url("http://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.5.4/bootstrap-sele
   background-repeat: no-repeat;
   width: 100%;
   height: 800px;
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
 }
 @-webkit-keyframes fadeInUp {
   from {
@@ -6758,6 +6769,22 @@ url("http://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.5.4/bootstrap-sele
     opacity: 1;
     -webkit-transform: none;
     transform: none;
+  }
+}
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 .homeContent {
@@ -6813,6 +6840,7 @@ url("http://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.5.4/bootstrap-sele
 .inputstl {
   width: 100px;
   padding: 9px;
+  margin-top: 5px;
   margin-left: 115px;
   border: solid 1px #0077B0;
   outline: 0;

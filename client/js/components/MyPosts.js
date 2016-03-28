@@ -5,6 +5,7 @@ import alt from '../utils/alt';
 import React from 'react';
 import MyPostsActions from '../actions/MyPostsActions';
 import MyPostsStore from '../stores/MyPostsStore';
+import Navbar from '../components/Navbar';
 
 
 // Creating Search to handle actions and store

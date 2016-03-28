@@ -71,7 +71,7 @@ class Search extends React.Component {
                             </div>
                         )
                     })}
-                    <button className="newSearch" onClick={this.handleNewSearchSubmit}>New Search</button>
+                    <button className="newSearch btn btn-default" onClick={this.handleNewSearchSubmit}>New Search</button>
                 </div>
             )
         } else {

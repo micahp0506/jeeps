@@ -39,7 +39,8 @@ class MyPostsActions {
         url: `/api/myposts/delete/${id}`,
   })
     .done((res) => {
-        this.actions.deleteSuccess(res);
+      console.log("posts action id", id);
+        this.actions.deleteSuccess(id);
       })
     .fail((err) => {
         this.actions.deleteFail(err);

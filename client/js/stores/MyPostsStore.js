@@ -27,7 +27,10 @@ class MyPostsStore {
   }
 
   // Handling successful deletion of post
-  onDeleteSuccess() {
+  onDeleteSuccess(id) {
+    let newId = parseInt(id);
+    this.searchResults = this.searchResults.filter((r) => {
+      return r.postId !== newId });
     this.deletionMessage = 'Deletion successful.'
   }
 

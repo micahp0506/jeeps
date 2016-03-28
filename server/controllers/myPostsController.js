@@ -22,7 +22,8 @@ MyPostsController.deletePost = (req, res, done) => {
         post.destroy();
     })
     .then(function() {
-        res.send('Post Removed.')
+        console.log("id", req.params.id);
+        res.sendStatus(200).send(req.params.id);
     })
     .catch(function(err) {
         return done(null, false, res.status('myPostsMessage', err));
