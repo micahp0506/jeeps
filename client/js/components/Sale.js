@@ -91,10 +91,6 @@ class Sale extends React.Component {
   // When change occurs handle state
   onChange(state) {
     this.setState(state);
-    // if (this.state.loginState) {
-    //   this.props.history.push('/');
-      // console.log("this.props", this.props);
-    // }
     console.log("Added new post");
   }
 
@@ -133,81 +129,71 @@ class Sale extends React.Component {
 
   render() {
     return (
-        <div className="ui middle aligned center aligned grid">
-            <div className="column">
-                <h2 className="ui black image header">
-                    <div className="content">
-                        Add New Post
-                    </div>
-                </h2>
-                <form className="ui large form">
-                    <div className="ui stacked segment">
-                        <div className="field">
-                            <div className="ui left icon input">
-                                <input type="text" name="email" ref="email"value={this.state.email} onChange={this.handleEmailChange}placeholder="E-mail address">
-                                </input>
-                            </div>
-                        </div>
-                        <div className="field">
-                            <div className="ui left icon input">
-                                <input type="text" name="name" ref="name" value={this.state.name} onChange={this.handleNameChange}placeholder="Name">
-                                </input>
-                            </div>
-                        </div>
-                        <div className="field">
-                            <div className="ui left icon input">
-                                <input type="text" name="make" ref="make" value={this.state.make} onChange={this.handleMakeChange}placeholder="Make">
-                                </input>
-                            </div>
-                        </div>
-                        <div className="field">
-                            <div className="ui left icon input">
-                                <input type="text" name="model" ref="model" value={this.state.model} onChange={this.handleModelChange}placeholder="Model">
-                                </input>
-                            </div>
-                        </div>
-                        <div className="field">
-                            <div className="ui left icon input">
-                                <input type="text" name="year" ref="year" value={this.state.year} onChange={this.handleYearChange}placeholder="Year">
-                                </input>
-                            </div>
-                        </div>
-                        <div className="field">
-                            <div className="ui left icon input">
-                                <input type="text" name="price" ref="price" value={this.state.price} onChange={this.handlePriceChange}placeholder="Price">
-                                </input>
-                            </div>
-                        </div>
-                        <div className="field">
-                            <div className="ui left icon input">
-                                <textarea name="description" ref="description" value={this.state.description} onChange={this.handleDescriptionChange}placeholder="description">
-                                </textarea>
-                            </div>
-                        </div>
-                        <div className="dropdown">
-                          <select className="dropdown-content" ref="menu" onChange={this.handleCategoryChange}>
-                            <option ref="atv" value="ATV">ATV</option>
-                            <option ref="utv" value="UTV">UTV</option>
-                            <option ref="dirt" value="Bike">Dirt Bike</option>
-                            <option ref="jeep" value="Jeep">Jeep</option>
-                            <option ref="jeep" value="Truck">Truck</option>
-                            <option ref="other" value="Other">Other</option>
-                          </select>
-                        </div>
-                        <div>
-                          <Dropzone value={this.state.image} onDrop={this.onDrop}>
-                            <div>Click to add an image.</div>
-                          </Dropzone>
-                        </div>
-                        <button className="ui fluid large black submit button" onClick={this.handleSubmit}>Post Add</button>
-                    </div>
-                    <div className="ui error message"></div>
-                </form>
-        </div>
-    </div>
+        <form className="form-horizontal">
+            <h1 className="content">Add New Post</h1>
+            <div className="form-group-mail">
+                <label className="col-sm-2 control-label">Email</label>
+                <div className="col-sm-10">
+                    <input type="email" className="form-control" id="inputPassword3" ref="email"value={this.state.email} onChange={this.handleEmailChange} placeholder="Email"></input>
+                </div>
+            </div>
+            <div className="form-group-name">
+                <label className="col-sm-2 control-label">Name</label>
+                <div className="col-sm-10">
+                    <input type="input" className="form-control" id="inputPassword3" ref="name" value={this.state.name} onChange={this.handleNameChange} placeholder="Name"></input>
+                </div>
+            </div>
+            <div className="form-group-make">
+                <label className="col-sm-2 control-label">Make</label>
+                <div className="col-sm-10">
+                    <input type="input" className="form-control" id="inputEmail3" ref="make" value={this.state.make} onChange={this.handleMakeChange} placeholder="Make"></input>
+                </div>
+            </div>
+            <div className="form-group-model">
+                <label className="col-sm-2 control-label">Model</label>
+                <div className="col-sm-10">
+                    <input type="input" className="form-control" id="inputPassword3" ref="model" value={this.state.model} onChange={this.handleModelChange} placeholder="Model"></input>
+                </div>
+            </div>
+            <div className="form-group-year">
+                <label className="col-sm-2 control-label">Year</label>
+                <div className="col-sm-10">
+                   <input type="input" className="form-control" id="inputPassword3" ref="year" value={this.state.year} onChange={this.handleYearChange} placeholder="Year"></input>
+                </div>
+            </div>
+            <div className="form-group-price">
+                <label className="col-sm-2 control-label">Price</label>
+                <div className="col-sm-10">
+                    <input type="input" className="form-control" id="inputPassword3" ref="price" value={this.state.price} onChange={this.handlePriceChange} placeholder="Price $"></input>
+                </div>
+            </div>
+            <div className="form-group-des">
+                <label className="col-sm-2 control-label">Description</label>
+                <textarea className="form-control" rows="3" ref="description" value={this.state.description} onChange={this.handleDescriptionChange} placeholder="Vehicle description"></textarea>
+            </div>
+            <div className="form-group">
+                <label className="col-sm-2 control-label category">Category</label>
+                <div className="col-sm-3">
+                    <select className="form-control inputstl" id="expertise" ref="menu" onChange={this.handleCategoryChange}>
+                        <option ref="atv" value="ATV">ATV</option>
+                        <option ref="utv" value="UTV">UTV</option>
+                        <option ref="dirt" value="Bike">Dirt Bike</option>
+                        <option ref="jeep" value="Jeep">Jeep</option>
+                        <option ref="jeep" value="Truck">Truck</option>
+                        <option ref="other" value="Other">Other</option>
+                    </select>
+                </div>
+            </div>
+            <div className="form-group">
+                <div className="col-sm-offset-2 col-sm-10">
+                    <button className="btn btn-default post-btn" onClick={this.handleSubmit}>Post Add</button>
+                </div>
+            </div>
+        </form>
     )
   }
 }
+
 
 
 export default Sale;

@@ -60,27 +60,27 @@ class Search extends React.Component {
                     {this.state.searchResults.map((post) => {
                         console.log("post", post);
                         return (
-                            <div className="item" key={post.postId}>
+                            <div className="post" key={post.postId}>
                                 <div>
-                                    <img src={"data:image/png;base64," + post.image }></img>
+                                    <img className="image" src={"data:image/png;base64," + post.image }></img>
                                 </div>
-                                <div className="content">
+                                <div className="make">
                                   <span>Make:  </span>
                                   {post.make}
                                 </div>
-                                <div className="content">
+                                <div className="model">
                                   <span>Model:  </span>
                                   {post.model}
                                 </div>
-                                <div className="content">
+                                <div className="year">
                                   <span>Year:  </span>
                                   {post.year}
                                 </div>
-                                <div className="content">
+                                <div className="price">
                                   <span>Price:  </span>
                                   {post.price}
                                 </div>
-                                <div className="content">
+                                <div className="description">
                                   <span>Description:  </span>
                                   {post.description}
                                 </div>
@@ -100,23 +100,25 @@ class Search extends React.Component {
             )
         } else {
             return (
-                <div>
-                    <h1>Search for listing</h1>
-                    <div className="dropdown">
-                          <select className="dropdown-content" ref="menu" onChange={this.handleCategoryChange}>
-                            <option ref="atv" value="ATV">ATV</option>
-                            <option ref="utv" value="UTV">UTV</option>
-                            <option ref="dirt" value="Bike">Dirt Bike</option>
-                            <option ref="jeep" value="Jeep">Jeep</option>
-                            <option ref="jeep" value="Truck">Truck</option>
-                            <option ref="other" value="Other">Other</option>
-                          </select>
+                <div className="search">
+                    <h1 className="searchTitle">Search for listing</h1>
+                    <div className="form-group-search">
+                        <label className="col-sm-2 control-label category">Choose Category</label>
+                        <div className="col-sm-3">
+                            <select className="form-control inputstl" id="expertise" ref="menu" onChange={this.handleCategoryChange}>
+                                    <option ref="atv" value="ATV">ATV</option>
+                                    <option ref="utv" value="UTV">UTV</option>
+                                    <option ref="dirt" value="Bike">Dirt Bike</option>
+                                    <option ref="jeep" value="Jeep">Jeep</option>
+                                    <option ref="jeep" value="Truck">Truck</option>
+                                    <option ref="other" value="Other">Other</option>
+                            </select>
                         </div>
-                    <button onClick={this.handleSearchSubmit}>Search</button>
+                    </div>
+                    <button className="btn btn-default post-btn" onClick={this.handleSearchSubmit}>Search</button>
                 </div>
             )
         }
-
     }
 }
 
