@@ -62,7 +62,8 @@ class Navbar extends React.Component{
                         <div id="navbar" className="collapse navbar-collapse">
                             <ul className="nav navbar-nav">
                                 <li><Link to={'/'}>Home</Link></li>
-                                <li><a href="#about" onClick={this.handleLogout}>Log Out</a></li>
+                                <li><a href="#" onClick={this.handleLogout}>Log Out</a></li>
+                                <li><Link to={'/sale'}>Sell Your Rig</Link></li>
                                 <li><Link to={'/myposts'} onClick={this.handleMyPosts}>My Posts</Link></li>
                             </ul>
                         </div>
@@ -85,6 +86,7 @@ class Navbar extends React.Component{
                         <div id="navbar" className="collapse navbar-collapse">
                             <ul className="nav navbar-nav">
                                 <li><Link to={'/'}>Home</Link></li>
+                                <li><Link to={'/search'}>Search Listings</Link></li>
                                 <li><Link to={'/login'}>Log In/Register</Link></li>
                             </ul>
                         </div>
