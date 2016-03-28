@@ -47,37 +47,13 @@ class MyPosts extends React.Component {
                     console.log("results", post);
                     return (
                         <div className="item" key={post.postId}>
-                            <div>
-                                <img className="image" src={"data:image/png;base64," + post.image }></img>
-                            </div>
-                            <div className="content">
-                              <span>Make:  </span>
-                              {post.make}
-                            </div>
-                            <div className="content">
-                              <span>Model:  </span>
-                              {post.model}
-                            </div>
-                            <div className="content">
-                              <span>Year:  </span>
-                              {post.year}
-                            </div>
-                            <div className="content">
-                              <span>Price:  </span>
-                              {post.price}
-                            </div>
-                            <div className="content">
-                              <span>Description:  </span>
-                              {post.description}
-                            </div>
-                            <div className="content">
-                              <span>Contact Name:  </span>
-                              {post.contactName}
-                            </div>
-                            <div className="content">
-                              <span>Contact Email:  </span>
-                              {post.contactEmail}
-                            </div>
+                            <span className="content listing">
+                                <span className="listing-price">$ {post.price}</span>
+                                <span className="listing-title">{post.make} {post.model} {post.year}</span>
+                                <span className="listing-description">{post.description}</span>
+                                <span className="listing-contact">{post.contactName} {post.contactEmail}</span>
+                                <span className="listing-location">{post.location}</span>
+                            </span>
                             <button value={post.postId} onClick={this.handleDeletePost}>Delete Post</button>
                         </div>
                     )
@@ -86,7 +62,7 @@ class MyPosts extends React.Component {
         )
     } else {
         return (
-            <div><h1>Loading....</h1></div>
+            <div><h1>You Have No Posts.</h1></div>
             )
     }
     }

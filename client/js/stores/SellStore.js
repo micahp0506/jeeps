@@ -2,12 +2,12 @@
 
 
 import alt from '../utils/alt';
-import SaleActions from '../actions/SaleActions';
+import SellActions from '../actions/SellActions';
 
 // Creating sale store constructor
-class SaleStore {
+class SellStore {
   constructor() {
-    this.bindActions(SaleActions);
+    this.bindActions(SellActions);
     this.email = '';
     this.name = '';
     this.helpBlock = '';
@@ -46,4 +46,4 @@ class SaleStore {
 
 }
 
-export default alt.createStore(SaleStore);
+export default alt.createStore(SellStore);

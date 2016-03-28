@@ -77,7 +77,7 @@ class Search extends React.Component {
                                   {post.year}
                                 </div>
                                 <div className="price">
-                                  <span>Price:  </span>
+                                  <span>Price:$  </span>
                                   {post.price}
                                 </div>
                                 <div className="description">
@@ -91,6 +91,10 @@ class Search extends React.Component {
                                 <div className="content">
                                   <span>Contact Email:  </span>
                                   {post.contactEmail}
+                                </div>
+                                <div className="content">
+                                  <span>Location:  </span>
+                                  {post.location}
                                 </div>
                             </div>
                         )

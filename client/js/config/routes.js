@@ -8,7 +8,7 @@ import Home from '../components/Home';
 import Login from '../components/Login';
 import Register from '../components/Register';
 import Search from '../components/Search';
-import Sale from '../components/Sale';
+import Sell from '../components/Sell';
 import MyPosts from '../components/MyPosts';
 
 export default (
@@ -18,7 +18,7 @@ export default (
             <Route path='/login' component={Login} />
             <Route path='/register' component={Register} />
             <Route path='/search' component={Search} />
-            <Route path='/sale' component={Sale} />
+            <Route path='/sale' component={Sell} />
             <Route path='/myposts' component={MyPosts} />
         </Route>
     </Router>

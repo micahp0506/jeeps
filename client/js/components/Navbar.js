@@ -60,11 +60,12 @@ class Navbar extends React.Component{
                             <a className="navbar-brand" href="#">Jeepers</a>
                         </div>
                         <div id="navbar" className="collapse navbar-collapse">
-                            <ul className="nav navbar-nav">
+                            <ul className="nav navbar-nav options">
                                 <li><Link to={'/'}>Home</Link></li>
-                                <li><a href="#" onClick={this.handleLogout}>Log Out</a></li>
+                                <li><Link to={'/search'}>Search Listings</Link></li>
                                 <li><Link to={'/sale'}>Sell Your Rig</Link></li>
                                 <li><Link to={'/myposts'} onClick={this.handleMyPosts}>My Posts</Link></li>
+                                <li><a href="#" onClick={this.handleLogout}>Log Out</a></li>
                             </ul>
                         </div>
                     </div>
@@ -84,7 +85,7 @@ class Navbar extends React.Component{
                             <a className="navbar-brand" href="#">Jeepers</a>
                         </div>
                         <div id="navbar" className="collapse navbar-collapse">
-                            <ul className="nav navbar-nav">
+                            <ul className="nav navbar-nav options">
                                 <li><Link to={'/'}>Home</Link></li>
                                 <li><Link to={'/search'}>Search Listings</Link></li>
                                 <li><Link to={'/login'}>Log In/Register</Link></li>

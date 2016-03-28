@@ -7,7 +7,7 @@ import LoginStore from '../stores/LoginStore';
 
 
 // Creating constructor to handle login action
-class SaleActions {
+class SellActions {
   constructor() {
     this.generateActions(
       'saleSuccess',
@@ -18,8 +18,8 @@ class SaleActions {
   }
 
   // Sending new add information to DB
-  createSale(id, email, name, make, model, year, price, description, category, image) {
-    console.log("image", image);
+  createSell(id, email, name, location, make, model, year, price, description, category, image) {
+    console.log("location", location);
     $.ajax({
       type: 'POST',
       url: '/api/post/create',
@@ -27,6 +27,7 @@ class SaleActions {
         userId: id,
         contactEmail: email,
         contactName: name,
+        location: location,
         make: make,
         model: model,
         year: year,
@@ -45,4 +46,4 @@ class SaleActions {
   }
 }
 
-export default alt.createActions(SaleActions);
+export default alt.createActions(SellActions);

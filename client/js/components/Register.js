@@ -88,7 +88,7 @@ class Register extends React.Component {
     return (
         <div className="login-container">
             <form className="form-signin">
-                <h2 className="form-signin-heading">Please Register</h2>
+                <h2 className="form-signin-heading header">REGISTER</h2>
                 <label className="sr-only">Email Address</label>
                 <input type="email" id="inputEmail" ref="email" className="form-control" placeholder="Email Address" required autofocus value={this.state.email} onChange={this.handleEmailChange}></input>
                 <label className="sr-only">Password</label>

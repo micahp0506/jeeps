@@ -76,7 +76,7 @@ class Login extends React.Component {
     return (
         <div className="login-container">
             <form className="form-signin">
-                <h2 className="form-signin-heading">Please sign in</h2>
+                <h2 className="form-signin-heading header">ACCOUNT LOGIN</h2>
                 <label className="sr-only">Email address</label>
                 <input type="email" id="inputEmail" ref="email" className="form-control" placeholder="Email address" required autofocus value={this.state.email} onChange={this.handleEmailChange}></input>
                 <label className="sr-only">Password</label>

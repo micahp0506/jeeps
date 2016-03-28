@@ -10,13 +10,14 @@ module.exports = function (sequelize, DataTypes) {
     },
     contactName: DataTypes.STRING,
     contactEmail: DataTypes.STRING,
+    location: DataTypes.STRING,
     make: DataTypes.STRING,
     model: DataTypes.STRING,
     year: DataTypes.STRING,
     price: DataTypes.STRING,
     description: DataTypes.STRING,
     category: DataTypes.STRING,
-    image: DataTypes.BLOB
+    image: DataTypes.STRING
 
   }, {
     tableName: 'posts',

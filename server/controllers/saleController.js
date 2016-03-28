@@ -14,6 +14,7 @@ SaleController.newPost = (req, res, done) => {
                     userId: req.body.userId,
                     contactEmail: req.body.contactEmail,
                     contactName: req.body.contactName,
+                    location: req.body.location,
                     make: req.body.make,
                     model: req.body.model,
                     year: req.body.year,

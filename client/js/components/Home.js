@@ -11,8 +11,7 @@ export default React.createClass({
     return (
         <div className="home">
             <div className="buttonHome">
-                <Link to={'/search'}><button type="button" className="btn btn-primary btn-lg outline">Search Inventory</button></Link>
-                <Link to={'/sale'}><button type="button" className="btn btn-primary btn-lg outline">Sell your Rig</button></Link>
+                <p className="homeContent">We Sell Jeeps.....and other things that get dirty.</p>
             </div>
         </div>
     )
