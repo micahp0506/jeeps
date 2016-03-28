@@ -11,6 +11,7 @@ class MyPostsStore {
     this.searchState = false;
     this.searchResults = null;
     this.deletionMessage = null;
+    this.postMessage = null;
   }
 
   // Handling successful search
@@ -19,11 +20,12 @@ class MyPostsStore {
     console.log("results", results);
     this.searchState = true;
     this.searchResults = results;
+    this.postMessage = 'New listing added.'
   }
 
   // Handling the unsuccessful search
   onMyPostsFail(err) {
-    console.log("Something went wrong. Please try again.");
+    this.postMessage = 'Listing not added. Please try again.';
   }
 
   // Handling successful deletion of post
@@ -31,12 +33,12 @@ class MyPostsStore {
     let newId = parseInt(id);
     this.searchResults = this.searchResults.filter((r) => {
       return r.postId !== newId });
-    this.deletionMessage = 'Deletion successful.'
+    this.deletionMessage = 'Listing Deleted.'
   }
 
   // Handling the unsuccessful deletion of post
   onDeleteFail() {
-    this.deletionMessage = 'Deletion failed, please try again.'
+    this.deletionMessage = 'Deletion failed. Please try again.'
   }
 }
 
