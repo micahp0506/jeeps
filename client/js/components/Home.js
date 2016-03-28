@@ -11,7 +11,8 @@ export default React.createClass({
     return (
         <div className="home">
             <div className="buttonHome">
-                <p className="homeContent">We Sell Jeeps.....and other things that get dirty.</p>
+                <p className="homeContent">WE SELL JEEPS....</p>
+                <p className="dirty">And other things that get dirty.</p>
             </div>
         </div>
     )

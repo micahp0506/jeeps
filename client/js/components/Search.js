@@ -79,9 +79,9 @@ class Search extends React.Component {
                 <div className="search">
                     <h1 className="searchTitle">Search for listing</h1>
                     <div className="form-group-search">
-                        <label className="control-label category">Choose Category</label>
+                        <label className="control-label category-search">Choose Category</label>
                         <div className="">
-                            <select className="form-control inputstl" id="expertise" ref="menu" onChange={this.handleCategoryChange}>
+                            <select className="form-control inputs2" id="expertise" ref="menu" onChange={this.handleCategoryChange}>
                                     <option ref="atv" value="ATV">ATV</option>
                                     <option ref="utv" value="UTV">UTV</option>
                                     <option ref="dirt" value="Bike">Dirt Bike</option>
@@ -91,7 +91,7 @@ class Search extends React.Component {
                             </select>
                         </div>
                     </div>
-                    <button className="btn btn-default post-btn" onClick={this.handleSearchSubmit}>Search</button>
+                    <button className="btn btn-default post-btn search-btn" onClick={this.handleSearchSubmit}>Search</button>
                 </div>
             )
         }
