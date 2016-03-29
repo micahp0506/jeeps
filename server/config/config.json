@@ -3,21 +3,21 @@
     "username": "Micah",
     "password": null,
     "database": "jeepers",
-    "host": "postgres://bqsboyewtpljol:hvrI-WNHZnT5wzhnqGpIP3YCz5@ec2-54-225-223-40.compute-1.amazonaws.com:5432/dbd6uea4l7014t",
+    "host": "heroku pg:psql --app guarded-scrubland-32833 DATABASE",
     "dialect": "postgres"
   },
   "test": {
     "username": "Micah",
     "password": null,
     "database": "jeepers",
-    "host": "postgres://bqsboyewtpljol:hvrI-WNHZnT5wzhnqGpIP3YCz5@ec2-54-225-223-40.compute-1.amazonaws.com:5432/dbd6uea4l7014t",
+    "host": "heroku pg:psql --app guarded-scrubland-32833 DATABASE",
     "dialect": "postgres"
   },
   "production": {
     "username": "Micah",
     "password": null,
     "database": "jeepers",
-    "host": "postgres://bqsboyewtpljol:hvrI-WNHZnT5wzhnqGpIP3YCz5@ec2-54-225-223-40.compute-1.amazonaws.com:5432/dbd6uea4l7014t",
+    "host": "heroku pg:psql --app guarded-scrubland-32833 DATABASE",
     "dialect": "postgres"
   }
 }
