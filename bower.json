@@ -20,6 +20,7 @@
     "bootstrap": "^3.3.5",
     "magnific-popup": "^1.0.0",
     "semantic": "semantic-ui#^2.1.8",
-    "bootstrap-select": "^1.10.0"
+    "bootstrap-select": "^1.10.0",
+    "toastr": "^2.1.2"
   }
 }

@@ -29,7 +29,6 @@ class Navbar extends React.Component{
     }
 
     onChange(state){
-        console.log("state", state);
         this.setState(state)
     }
 
@@ -40,8 +39,8 @@ class Navbar extends React.Component{
     }
 
     handleLogout() {
-        console.log("this", this);
         alt.recycle(LoginStore);
+        toastr.success('User logged out.');
         this._reactInternalInstance._context.history.push('/');
     }
 

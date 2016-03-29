@@ -4,6 +4,7 @@
 import alt from '../utils/alt';
 import SellActions from '../actions/SellActions';
 
+
 // Creating sale store constructor
 class SellStore {
   constructor() {
@@ -14,6 +15,9 @@ class SellStore {
     this.emailValidationState = '';
     this.nameValidationState = '';
     this.saleState = false;
+    this.saleMessage = null;
+    this.noEmailMessage = null;
+    this.noNameMessage = null;
   }
 
   // Handling the posting of a new add
@@ -22,25 +26,31 @@ class SellStore {
     this.emailValidationState = 'has-success';
     this.helpBlock = successMessage;
     this.saleState = true;
+    this.saleMessage = 'New listing added.'
+    toastr.success(this.saleMessage);
   }
 
   // Handling the failure to post of a new add
   onSaleFail(errorMessage) {
     this.emailValidationState = 'has-error';
     this.helpBlock = errorMessage;
-    console.log("Something went wrong. Please try again.");
+    this.saleMessage ="Something went wrong. Please try again.";
+    toastr.errror(this.saleMessage);
   }
 
   // Handling no email provided by user
   onNoEmail() {
     this.emailValidationState = 'has-error';
-    this.helpBlock = 'Please enter an email.';
+    this.noEmailMessage = 'Please enter an email.';
+    toastr.errror(this.noEmailMessage);
   }
 
   // Handling no password provided by user
   onNoName() {
     this.passwordValidationState = 'has-error';
-    this.helpBlock = 'Please enter your name';
+    this.noNameMessage = 'Please enter your name';
+    toastr.errror(this.noNameMessage);
+
   }
 
 

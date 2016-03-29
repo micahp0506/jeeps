@@ -4,6 +4,7 @@
 import alt from '../utils/alt';
 import LoginActions from '../actions/LoginActions';
 
+
 // Creating register store constructor
 class LoginStore {
   constructor() {
@@ -14,38 +15,42 @@ class LoginStore {
     this.emailValidationState = '';
     this.passwordValidationState = '';
     this.loginState = false;
+    this.loginMessage = null;
+    this.noEmailMessage = null;
+    this.noPasswordMessage = null;
   }
 
-  // Handling the registration of new user
+  // Handling the login of new user
   onLoginSuccess(data) {
-    console.log("data", data);
-    console.log("user logged in");
     this.emailValidationState = 'has-success';
     this.helpBlock = data;
     this.email = data.userEmail;
     this.userId = data.userId;
-    console.log("this.userId", this.userId);
     this.loginState = true;
+    this.loginMessage = 'Login successful.';
+    toastr.success(this.loginMessage);
   }
 
-  // Handling the failure to register of new user
+  // Handling the failure to login of new user
   onLoginFail(errorMessage) {
-    console.log("error", errorMessage);
     this.emailValidationState = 'has-error';
     this.helpBlock = errorMessage;
-    console.log("Email or password is not correct. Please try again.");
+    this.loginMessage = 'Email or password is not correct. Please try again.';
+    toastr.error(this.loginMessage);
   }
 
   // Handling no email provided by user
   onnoEmail() {
     this.emailValidationState = 'has-error';
-    this.helpBlock = 'Please enter an email.';
+    this.noEmailMessage = 'Please enter an email.';
+    toastr.error(this.noEmailMessage);
   }
 
   // Handling no password provided by user
   onnoPassword() {
     this.passwordValidationState = 'has-error';
-    this.helpBlock = 'Please enter a password';
+    this.noPasswordMessage = 'Please enter a password.';
+    toastr.error(this.noPasswordMessage);
   }
 
 }

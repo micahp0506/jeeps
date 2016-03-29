@@ -4,6 +4,7 @@
 import alt from '../utils/alt';
 import MyPostsActions from '../actions/MyPostsActions';
 
+
 // Creating search store constructor
 class MyPostsStore {
   constructor() {
@@ -20,7 +21,6 @@ class MyPostsStore {
     console.log("results", results);
     this.searchState = true;
     this.searchResults = results;
-    this.postMessage = 'New listing added.'
   }
 
   // Handling the unsuccessful search
@@ -33,12 +33,14 @@ class MyPostsStore {
     let newId = parseInt(id);
     this.searchResults = this.searchResults.filter((r) => {
       return r.postId !== newId });
-    this.deletionMessage = 'Listing Deleted.'
+    this.deletionMessage = 'Listing deleted.'
+    toastr.success(this.deletionMessage);
   }
 
   // Handling the unsuccessful deletion of post
   onDeleteFail() {
     this.deletionMessage = 'Deletion failed. Please try again.'
+    toastr.error(this.deletionMessage);
   }
 }
 

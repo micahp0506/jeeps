@@ -16,8 +16,6 @@ class SearchStore {
   onSearchSuccess(results) {
     this.searchState = true;
     this.searchResults = results;
-    console.log("results", results);
-    console.log("Search Success");
   }
 
 // Handling the unsuccessful search
