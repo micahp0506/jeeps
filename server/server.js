@@ -17,7 +17,9 @@ const _ = require('underscore');
 const passport = require('passport');
 const routes = require('./routes');
 const session = require('express-session')
-
+const RedisStore = require('connect-redis')(session);
+const SECRETS = process.env.SESS_SECRET || 'WORDS';
+const REDIS_URL = process.env.REDIS_URL || 'redis://localhost:6379';
 // Babel ES6/JSX Compiler
 require('babel-register');
 
@@ -28,7 +30,14 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname,'..', 'client/public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(session({ secret: 'SECRETS'}))
+app.use(session({
+    secret: SECRETS,
+    resave: false,
+    saveUninitialized: true,
+    store: new RedisStore ({
+        url: REDIS_URL
+    })
+}));
 
 app.use(passport.initialize());
 app.use(passport.session());
