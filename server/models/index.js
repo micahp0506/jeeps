@@ -3,16 +3,22 @@
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
-const basename = path.basename(module.filename);
-const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
-const db = {};
+// const DATABASE = process.env.DATABASE || 'jeepers';
+// const USER_NAME = process.env.USER_NAME || 'Micah';
+// const PASSWORD = process.env.PASSWORD || '';
+// const DB_HOST = process.env.DB_HOST || 'localhost';
+// const DB_PORT = process.env.DB_PORT || 5432;
+// const USE_SSL = process.env.USE_SSL || false;
+// const sequelize = new Sequelize(DATABASE, USER_NAME, PASSWORD, {
+//     database: DATABASE,
+//     port: DB_PORT,
+//     ssl: USE_SSL
+// });
+const DATABASE_URL = process.env.DATABASE_URL || 'postgres://localhost:5432/jeepers';
+const sequelize = new Sequelize(DATABASE_URL);
 
-if (config.use_env_variable) {
-  var sequelize = new Sequelize(process.env[config.use_env_variable]);
-} else {
-  var sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
+const basename = path.basename(module.filename);
+const db = {};
 
 fs
   .readdirSync(__dirname)
