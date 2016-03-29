@@ -56,9 +56,11 @@ class Login extends React.Component {
 
     // Handling the login of a user
     if (!email) {
+      toastr.error('Please enter an email address.')
       LoginActions.noEmail();
       this.refs.nameTextField.getDOMNode().focus();
     } else if (!password) {
+      toastr.error('Please enter a password.')
       LoginActions.noPassword();
     } else if (email && password) {
       LoginActions.loginUser(email, password);

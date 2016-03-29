@@ -88,6 +88,7 @@ var MyPostsActions = function () {
     value: function getMyPosts(id) {
       var _this = this;
 
+      console.log("id", id);
       fetch('/api/myposts/' + id).then(function (response) {
         return response.json();
       }).then(function (results) {
@@ -2729,9 +2730,11 @@ var Login = function (_React$Component) {
 
       // Handling the login of a user
       if (!email) {
+        toastr.error('Please enter an email address.');
         _LoginActions2.default.noEmail();
         this.refs.nameTextField.getDOMNode().focus();
       } else if (!password) {
+        toastr.error('Please enter a password.');
         _LoginActions2.default.noPassword();
       } else if (email && password) {
         _LoginActions2.default.loginUser(email, password);
@@ -2976,6 +2979,10 @@ var _LoginStore = require('../stores/LoginStore');
 
 var _LoginStore2 = _interopRequireDefault(_LoginStore);
 
+var _SearchStore = require('../stores/SearchStore');
+
+var _SearchStore2 = _interopRequireDefault(_SearchStore);
+
 var _LoginActions = require('../actions/LoginActions');
 
 var _LoginActions2 = _interopRequireDefault(_LoginActions);
@@ -3039,6 +3046,7 @@ var Navbar = function (_React$Component) {
         key: 'handleLogout',
         value: function handleLogout() {
             _alt2.default.recycle(_LoginStore2.default);
+            _alt2.default.recycle(_SearchStore2.default);
             toastr.success('User logged out.');
             this._reactInternalInstance._context.history.push('/');
         }
@@ -3204,7 +3212,7 @@ var Navbar = function (_React$Component) {
 
 exports.default = Navbar;
 
-},{"../actions/LoginActions":1,"../actions/MyPostsActions":2,"../stores/LoginStore":17,"../stores/MyPostsStore":18,"../utils/alt":22,"react":"react","react-router":"react-router"}],12:[function(require,module,exports){
+},{"../actions/LoginActions":1,"../actions/MyPostsActions":2,"../stores/LoginStore":17,"../stores/MyPostsStore":18,"../stores/SearchStore":20,"../utils/alt":22,"react":"react","react-router":"react-router"}],12:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3301,7 +3309,6 @@ var Register = function (_React$Component) {
   }, {
     key: 'onChange',
     value: function onChange(state) {
-      console.log("cstate", state);
       this.setState(state);
       if (this.state.registerState) {
         this.props.history.push('/');
@@ -3321,11 +3328,11 @@ var Register = function (_React$Component) {
 
       // Handling the registration of new user
       if (!email) {
-        _RegisterActions2.default.noEmail();
+        toastr.error('Please enter an email address.');
       } else if (!password) {
-        _RegisterActions2.default.noPassword();
+        toastr.error('Please enter a password.');
       } else if (password !== confirmPassword) {
-        _RegisterActions2.default.doesNotMatch();
+        toastr.error('Passwords do not match.');
       } else if (email && password) {
         _RegisterActions2.default.addUser(email, password);
       }
@@ -4319,7 +4326,7 @@ var RegisterStore = function () {
       this.helpBlock = successMessage;
       this.registerState = true;
       this.loginState = true;
-      this.registerMessage = 'New user added.';
+      this.registerMessage = 'New user added. Please log in.';
       toastr.success(this.registerMessage);
     }
 

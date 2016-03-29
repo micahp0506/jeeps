@@ -17,6 +17,7 @@ class MyPostsActions {
   }
 
   getMyPosts(id) {
+    console.log("id", id);
     fetch(`/api/myposts/${id}`)
     .then((response) => {
         return response.json()

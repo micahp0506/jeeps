@@ -5,6 +5,7 @@ import React from 'react';
 import alt from '../utils/alt';
 import {Route, Router, browserHistory, Link} from 'react-router';
 import LoginStore from '../stores/LoginStore';
+import SearchStore from '../stores/SearchStore';
 import LoginActions from '../actions/LoginActions';
 import MyPostsActions from '../actions/MyPostsActions';
 import MyPostsStore from '../stores/MyPostsStore';
@@ -40,6 +41,7 @@ class Navbar extends React.Component{
 
     handleLogout() {
         alt.recycle(LoginStore);
+        alt.recycle(SearchStore);
         toastr.success('User logged out.');
         this._reactInternalInstance._context.history.push('/');
     }

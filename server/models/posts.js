@@ -21,7 +21,13 @@ module.exports = function (sequelize, DataTypes) {
 
   }, {
     tableName: 'posts',
-    timestamps: false
+    timestamps: false,
+    classMethods: {
+        associate: function (models) {
+            // associations can be defined here
+            Post.belongsTo(models.User, {foreignKey: 'userId'});
+       }
+     }
 });
 
   return Post;

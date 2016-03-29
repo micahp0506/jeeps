@@ -28,7 +28,7 @@ class RegisterStore {
     this.helpBlock = successMessage;
     this.registerState = true;
     this.loginState = true;
-    this.registerMessage = 'New user added.';
+    this.registerMessage = 'New user added. Please log in.';
     toastr.success(this.registerMessage);
   }
 

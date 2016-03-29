@@ -47,7 +47,6 @@ class Register extends React.Component {
 
   // When change occurs handle state
   onChange(state) {
-    console.log("cstate", state);
     this.setState(state);
     if (this.state.registerState) {
       this.props.history.push('/');
@@ -64,11 +63,11 @@ class Register extends React.Component {
 
     // Handling the registration of new user
     if (!email) {
-      RegisterActions.noEmail();
+      toastr.error('Please enter an email address.');
     } else if (!password) {
-      RegisterActions.noPassword();
+      toastr.error('Please enter a password.');
     } else if (password !== confirmPassword) {
-      RegisterActions.doesNotMatch();
+      toastr.error('Passwords do not match.');
     } else if (email && password) {
       RegisterActions.addUser(email, password);
     }
