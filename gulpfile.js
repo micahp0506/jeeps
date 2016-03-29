@@ -98,7 +98,7 @@ gulp.task('browserify-watch', ['browserify-vendor'], function() {
       .on('end', function() {
         gutil.log(gutil.colors.green('Finished rebundling in', (Date.now() - start) + 'ms.'));
       })
-      .pipe(source('bundle.js'))
+      .pipe(source('stupid.js'))
       .pipe(buffer())
       .pipe(sourcemaps.init({ loadMaps: true }))
       .pipe(sourcemaps.write('.'))
