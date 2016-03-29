@@ -54,19 +54,13 @@ class Login extends React.Component {
     let email = this.state.email;
     let password = this.state.password;
 
-    // If no email provided
+    // Handling the login of a user
     if (!email) {
       LoginActions.noEmail();
       this.refs.nameTextField.getDOMNode().focus();
-    }
-
-    // If no password provided
-    if (!password) {
+    } else if (!password) {
       LoginActions.noPassword();
-    }
-
-    // Handling login of user
-    if (email && password) {
+    } else if (email && password) {
       LoginActions.loginUser(email, password);
     }
   }

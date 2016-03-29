@@ -62,23 +62,14 @@ class Register extends React.Component {
     let password = this.state.password;
     let confirmPassword = this.state.confirmPassword;
 
-    // If no email provided
+    // Handling the registration of new user
     if (!email) {
       RegisterActions.noEmail();
-    }
-
-    // If no password provided
-    if (!password) {
+    } else if (!password) {
       RegisterActions.noPassword();
-    }
-
-    // If passwords do not match
-    if (password !== confirmPassword) {
+    } else if (password !== confirmPassword) {
       RegisterActions.doesNotMatch();
-    }
-
-    // Handling registration of new user
-    if (email && password) {
+    } else if (email && password) {
       RegisterActions.addUser(email, password);
     }
   }

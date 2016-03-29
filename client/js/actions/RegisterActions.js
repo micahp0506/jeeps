@@ -25,12 +25,12 @@ class RegisterActions {
       url: '/api/user/create',
       data: { userEmail: email, userPassword: password }
     })
-      .done((data) => {
+    .done((data) => {
         this.actions.registerSuccess(data.message);
-      })
-      .fail((err) => {
+    })
+    .fail((err) => {
         this.actions.registerFail(err);
-      });
+    });
   }
 }
 

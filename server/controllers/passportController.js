@@ -19,7 +19,7 @@ passport.deserializeUser(function(id, done) {
     });
 });
 
-//Use local strategy to login user
+//Using passport to authenticate user login
 passport.use(new LocalStrategy({usernameField: 'userEmail', passwordField: 'userPassword'},
     function(email, password, done) {
         db.User.findOne({ where: { userEmail: email }})
@@ -31,17 +31,14 @@ passport.use(new LocalStrategy({usernameField: 'userEmail', passwordField: 'user
                         if (err) throw err;
 
                         if (valid) {
-                            console.log("User Authenticated");
                             return done(null, user);
                         } else {
                             return done();
                         }
                     });
-                    return done(null, user);
                 }
             }).catch(function(err){
-                console.log("err", err);
-                    return done(err);
+                return done(err);
             });
 }));
 
