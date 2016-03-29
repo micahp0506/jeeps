@@ -13,6 +13,7 @@ const sequelize = new Sequelize(DATABASE, USER_NAME, PASSWORD, {
     dialect: 'postgres',
     database: DATABASE,
     port: DB_PORT,
+    host: DB_HOST,
     ssl: USE_SSL
 });
 const DATABASE_URL = process.env.DATABASE_URL || 'postgres://localhost:5432/jeepers';
