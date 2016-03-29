@@ -24,7 +24,7 @@ module.exports = function (sequelize, DataTypes) {
         // associations can be defined here
         User.hasMany(models.Post);
       }
-    }
+    },
     instanceMethods: {
       authenticate: function(userPassword, cb) {
             return bcrypt.compare(userPassword, this.userPassword, cb);

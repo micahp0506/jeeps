@@ -10,6 +10,7 @@ const DB_HOST = process.env.DB_HOST || 'localhost';
 const DB_PORT = process.env.DB_PORT || 5432;
 const USE_SSL = process.env.USE_SSL || false;
 const sequelize = new Sequelize(DATABASE, USER_NAME, PASSWORD, {
+    dialect: 'postgres',
     database: DATABASE,
     port: DB_PORT,
     ssl: USE_SSL
