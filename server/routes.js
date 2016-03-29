@@ -18,7 +18,7 @@ router.get('/api/myposts/:id', myPostsController.findMyPosts);
 router.delete('/api/myposts/delete/:id', myPostsController.deletePost);
 
 router.get('*', (req, res) => {
-  res.redirect('/');
+  res.redirect(301, '/');
 });
 
 

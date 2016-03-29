@@ -39,8 +39,8 @@ client/public/js/vendor.js
 client/public/js/vendor.bundle.js
 client/public/css/*
 
-# Ignoring bower_components
-client/js/bower_components
+# Ignoring bowerComponents
+client/js/bowerComponents
 
 #Ignoring svg and ttf
 *.svg

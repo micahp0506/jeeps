@@ -3,7 +3,7 @@
 
 import React from 'react';
 import Navbar from './Navbar';
-import $ from '../bower_components/jquery/dist/jquery.min.js';
+import $ from '../bowerComponents/jquery/dist/jquery.min.js';
 
 
 class App extends React.Component {
