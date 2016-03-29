@@ -19,6 +19,10 @@ module.exports = function (sequelize, DataTypes) {
     classMethods: {
       generateHash: function(userPassword, done) {
             return bcrypt.hashSync(userPassword, bcrypt.genSaltSync(8), null);
+      },
+      associate: function (models) {
+        // associations can be defined here
+        User.hasMany(models.posts);
       }
     },
     instanceMethods: {
