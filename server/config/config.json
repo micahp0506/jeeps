@@ -3,21 +3,21 @@
     "username": "Micah",
     "password": null,
     "database": "jeepers",
-    "host": "127.0.0.1",
+    "host": "postgres://bqsboyewtpljol:hvrI-WNHZnT5wzhnqGpIP3YCz5@ec2-54-225-223-40.compute-1.amazonaws.com:5432/dbd6uea4l7014t",
     "dialect": "postgres"
   },
   "test": {
     "username": "Micah",
     "password": null,
     "database": "jeepers",
-    "host": "127.0.0.1",
+    "host": "postgres://bqsboyewtpljol:hvrI-WNHZnT5wzhnqGpIP3YCz5@ec2-54-225-223-40.compute-1.amazonaws.com:5432/dbd6uea4l7014t",
     "dialect": "postgres"
   },
   "production": {
     "username": "Micah",
     "password": null,
     "database": "jeepers",
-    "host": "127.0.0.1",
+    "host": "postgres://bqsboyewtpljol:hvrI-WNHZnT5wzhnqGpIP3YCz5@ec2-54-225-223-40.compute-1.amazonaws.com:5432/dbd6uea4l7014t",
     "dialect": "postgres"
   }
 }
