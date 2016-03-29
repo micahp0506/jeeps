@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/server.js",
     "watch": "nodemon server/server.js",
-    "postinstall": "node_modules/bower/bin/bower install"
+    "postinstall": "node_modules/bower/bin/bower install && node_modules/gulp/bin/gulp build"
   },
   "repository": {
     "type": "git",
