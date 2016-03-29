@@ -27,7 +27,7 @@ require('babel-register');
 const PORT = process.env.PORT || 3000;
 
 
-app.use(express.static(path.join(__dirname,'..', 'client/public')));
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(session({
@@ -43,7 +43,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require('./controllers/passportController');
-
+app.use(express.static(path.join(__dirname,'..', 'client/public')));
 app.use(routes);
 
 app.listen(PORT, () => {
