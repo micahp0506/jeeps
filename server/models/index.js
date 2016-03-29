@@ -15,7 +15,7 @@ const sequelize = new Sequelize(DATABASE, USER_NAME, PASSWORD, {
     ssl: USE_SSL
 });
 const DATABASE_URL = process.env.DATABASE_URL || 'postgres://localhost:5432/jeepers';
-const sequelize = new Sequelize(DATABASE_URL);
+// const sequelize = new Sequelize(DATABASE_URL);
 
 const basename = path.basename(module.filename);
 const db = {};
