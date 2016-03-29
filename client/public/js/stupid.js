@@ -6085,4 +6085,4 @@ module.exports = warning;
 },{"_process":41}]},{},[16])
 
 
-//# sourceMappingURL=bundle.js.map
+//# sourceMappingURL=stupid.js.map
