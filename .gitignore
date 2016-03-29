@@ -33,10 +33,10 @@ node_modules
 .node_repl_history
 
 # Ignoring bundle file
-client/public/js/bundle.js
-client/public/js/bundle.js.map
+client/public/js/stupid.js
+client/public/js/stupid.js.map
 client/public/js/vendor.js
-client/public/js/vendor.bundle.js
+client/public/js/vendor.stupid.js
 client/public/css/*
 
 # Ignoring bowerComponents

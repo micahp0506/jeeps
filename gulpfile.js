@@ -34,11 +34,11 @@ const dependencies = [
  */
 gulp.task('vendor', function() {
   return gulp.src([
-    'client/js/bowerComponents/jquery/dist/jquery.js',
-    'client/js/bowerComponents/semantic/dist/semantic.js',
-    'client/js/bowerComponents/bootstrap/dist/js/bootstrap.js',
-    'client/js/bowerComponents/magnific-popup/dist/jquery.magnific-popup.js',
-    'client/js/bowerComponents/toastr/toastr.js'
+    'client/js/bower_components/jquery/dist/jquery.js',
+    'client/js/bower_components/semantic/dist/semantic.js',
+    'client/js/bower_components/bootstrap/dist/js/bootstrap.js',
+    'client/js/bower_components/magnific-popup/dist/jquery.magnific-popup.js',
+    'client/js/bower_components/toastr/toastr.js'
   ]).pipe(concat('vendor.js'))
     .pipe(gulpif(production, uglify({ mangle: false })))
     .pipe(gulp.dest('client/public/js'));
@@ -53,7 +53,7 @@ gulp.task('browserify-vendor', function() {
   return browserify()
     .require(dependencies)
     .bundle()
-    .pipe(source('vendor.bundle.js'))
+    .pipe(source('vendor.stupid.js'))
     .pipe(buffer())
     .pipe(gulpif(production, uglify({ mangle: false })))
     .pipe(gulp.dest('client/public/js'));
