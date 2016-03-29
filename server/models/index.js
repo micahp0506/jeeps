@@ -3,17 +3,17 @@
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
-// const DATABASE = process.env.DATABASE || 'jeepers';
-// const USER_NAME = process.env.USER_NAME || 'Micah';
-// const PASSWORD = process.env.PASSWORD || '';
-// const DB_HOST = process.env.DB_HOST || 'localhost';
-// const DB_PORT = process.env.DB_PORT || 5432;
-// const USE_SSL = process.env.USE_SSL || false;
-// const sequelize = new Sequelize(DATABASE, USER_NAME, PASSWORD, {
-//     database: DATABASE,
-//     port: DB_PORT,
-//     ssl: USE_SSL
-// });
+const DATABASE = process.env.DATABASE || 'jeepers';
+const USER_NAME = process.env.USER_NAME || 'Micah';
+const PASSWORD = process.env.PASSWORD || '';
+const DB_HOST = process.env.DB_HOST || 'localhost';
+const DB_PORT = process.env.DB_PORT || 5432;
+const USE_SSL = process.env.USE_SSL || false;
+const sequelize = new Sequelize(DATABASE, USER_NAME, PASSWORD, {
+    database: DATABASE,
+    port: DB_PORT,
+    ssl: USE_SSL
+});
 const DATABASE_URL = process.env.DATABASE_URL || 'postgres://localhost:5432/jeepers';
 const sequelize = new Sequelize(DATABASE_URL);
 
