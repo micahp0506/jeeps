@@ -69,7 +69,7 @@ gulp.task('browserify', ['browserify-vendor'], function() {
     .external(dependencies)
     .transform(babelify, { presets: ['es2015', 'react'] })
     .bundle()
-    .pipe(source('bundle.js'))
+    .pipe(source('stupid.js'))
     .pipe(buffer())
     .pipe(sourcemaps.init({ loadMaps: true }))
     .pipe(gulpif(production, uglify({ mangle: false })))
