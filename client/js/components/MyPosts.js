@@ -63,7 +63,7 @@ class MyPosts extends React.Component {
         )
     } else {
         return (
-            <div><h1>You Have No Posts.</h1></div>
+            <div><h1 className="noPosts">You Have No Posts To Show.</h1></div>
             )
     }
     }

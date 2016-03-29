@@ -2940,8 +2940,8 @@ var MyPosts = function (_React$Component) {
                     null,
                     _react2.default.createElement(
                         'h1',
-                        null,
-                        'You Have No Posts.'
+                        { className: 'noPosts' },
+                        'You Have No Posts To Show.'
                     )
                 );
             }
