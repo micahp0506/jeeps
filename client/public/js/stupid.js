@@ -3370,7 +3370,7 @@ var Register = function (_React$Component) {
           _react2.default.createElement(
             'button',
             { className: 'btn btn-lg btn-primary btn-block', onClick: this.handleSubmit, type: 'submit' },
-            'Sign in'
+            'Register'
           )
         )
       );

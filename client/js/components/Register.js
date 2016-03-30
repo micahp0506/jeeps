@@ -84,7 +84,7 @@ class Register extends React.Component {
                 <label className="sr-only">Password</label>
                 <input type="password" id="inputPassword" ref="password" className="form-control" placeholder="Password" required value={this.state.password} onChange={this.handlePasswordChange}></input>
                 <input type="password" id="inputPassword" ref="confirmPassword" className="form-control" placeholder="Confirm Password" required value={this.state.confirmPassword} onChange={this.handleConfirmPasswordChange}></input>
-                <button className="btn btn-lg btn-primary btn-block" onClick={this.handleSubmit} type="submit">Sign in</button>
+                <button className="btn btn-lg btn-primary btn-block" onClick={this.handleSubmit} type="submit">Register</button>
             </form>
         </div>
     )
