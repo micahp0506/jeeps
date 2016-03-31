@@ -46,6 +46,7 @@ require('./controllers/passportController');
 app.use(express.static(path.join(__dirname,'..', 'client/public')));
 app.use(routes);
 
+//Listening on 3000 or process.env.PORT
 app.listen(PORT, () => {
     console.log(__dirname)
   console.log(`Node.js server has started. Listening on port ${PORT}`);
