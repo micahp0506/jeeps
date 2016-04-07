@@ -80,7 +80,7 @@ var MyPostsActions = function () {
   function MyPostsActions() {
     _classCallCheck(this, MyPostsActions);
 
-    this.generateActions('myPostsSuccess', 'myPostsFail', 'deleteSuccess', 'deleteFail');
+    this.generateActions('myPostsSuccess', 'myPostsFail', 'deleteSuccess', 'deleteFail', 'editSuccess', 'editFail');
   }
 
   _createClass(MyPostsActions, [{
@@ -88,7 +88,6 @@ var MyPostsActions = function () {
     value: function getMyPosts(id) {
       var _this = this;
 
-      console.log("id", id);
       fetch('/api/myposts/' + id).then(function (response) {
         return response.json();
       }).then(function (results) {
@@ -104,8 +103,6 @@ var MyPostsActions = function () {
     value: function deletePost(id) {
       var _this2 = this;
 
-      console.log("actions delete");
-      console.log("id", id);
       _jqueryMin2.default.ajax({
         type: 'DELETE',
         url: '/api/myposts/delete/' + id
@@ -115,6 +112,12 @@ var MyPostsActions = function () {
       }).fail(function (err) {
         _this2.actions.deleteFail(err);
       });
+    }
+  }, {
+    key: 'editPost',
+    value: function editPost(id) {
+      console.log("id", id);
+      console.log("actions edit");
     }
   }]);
 
@@ -2842,6 +2845,7 @@ var MyPosts = function (_React$Component) {
         console.log("this.state", _this.state);
         _this.onChange = _this.onChange.bind(_this);
         _this.handleDeletePost = _this.handleDeletePost.bind(_this);
+        _this.handleEditPost = _this.handleEditPost.bind(_this);
         return _this;
     }
     // Listening to changes at the store
@@ -2884,6 +2888,7 @@ var MyPosts = function (_React$Component) {
         key: 'handleEditPost',
         value: function handleEditPost(e) {
             console.log("e", e.target.value);
+            _MyPostsActions2.default.editPost(e.target.value);
         }
     }, {
         key: 'render',
@@ -2939,7 +2944,7 @@ var MyPosts = function (_React$Component) {
                             ),
                             _react2.default.createElement(
                                 'button',
-                                { className: 'btn btn-default delete ', value: post.postId, onClick: _this2.handleEditPost },
+                                { className: 'btn btn-default delete', value: post.postId, onClick: _this2.handleEditPost },
                                 'Edit Post'
                             ),
                             _react2.default.createElement(

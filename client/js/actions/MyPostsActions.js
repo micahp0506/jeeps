@@ -12,12 +12,13 @@ class MyPostsActions {
       'myPostsSuccess',
       'myPostsFail',
       'deleteSuccess',
-      'deleteFail'
+      'deleteFail',
+      'editSuccess',
+      'editFail'
     );
   }
 
   getMyPosts(id) {
-    console.log("id", id);
     fetch(`/api/myposts/${id}`)
     .then((response) => {
         return response.json()
@@ -33,8 +34,6 @@ class MyPostsActions {
   }
 
   deletePost(id) {
-    console.log("actions delete");
-    console.log("id", id);
     $.ajax({
         type: 'DELETE',
         url: `/api/myposts/delete/${id}`,
@@ -46,7 +45,12 @@ class MyPostsActions {
     .fail((err) => {
         this.actions.deleteFail(err);
     });
-}
+  }
+
+  editPost(id) {
+    console.log("id", id);
+    console.log("actions edit");
+  }
 }
 
 export default alt.createActions(MyPostsActions);

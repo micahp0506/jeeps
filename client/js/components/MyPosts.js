@@ -17,6 +17,7 @@ class MyPosts extends React.Component {
         console.log("this.state", this.state);
         this.onChange = this.onChange.bind(this);
         this.handleDeletePost = this.handleDeletePost.bind(this);
+        this.handleEditPost = this.handleEditPost.bind(this);
     }
     // Listening to changes at the store
     componentDidMount() {
@@ -42,6 +43,7 @@ class MyPosts extends React.Component {
     // Handling editing of post
     handleEditPost(e) {
         console.log("e", e.target.value);
+        MyPostsActions.editPost(e.target.value)
     }
 
     render() {
@@ -59,7 +61,7 @@ class MyPosts extends React.Component {
                                 <span className="listing-contact">Contact: {post.contactName} at {post.contactEmail}</span>
                                 <span>Location: {post.location}</span>
                             </span>
-                            <button className="btn btn-default delete " value={post.postId} onClick={this.handleEditPost}>Edit Post</button>
+                            <button className="btn btn-default delete" value={post.postId} onClick={this.handleEditPost}>Edit Post</button>
                             <button className="btn btn-danger delete" value={post.postId} onClick={this.handleDeletePost}>Delete Post</button>
                         </div>
                     )
