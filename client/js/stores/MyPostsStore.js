@@ -42,6 +42,16 @@ class MyPostsStore {
     this.deletionMessage = 'Deletion failed. Please try again.'
     toastr.error(this.deletionMessage);
   }
+
+  // Handling chosen post to edit success
+  onChosenPostSuccess(res) {
+    console.log("res", res);
+  }
+
+  // handling chosen post to edit failure
+  onChosenPostFail() {
+    console.log("failed!");
+  }
 }
 
 export default alt.createStore(MyPostsStore);

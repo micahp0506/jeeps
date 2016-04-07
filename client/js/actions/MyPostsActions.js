@@ -13,8 +13,8 @@ class MyPostsActions {
       'myPostsFail',
       'deleteSuccess',
       'deleteFail',
-      'editSuccess',
-      'editFail'
+      'chosenPostSuccess',
+      'chosenPostFail'
     );
   }
 
@@ -47,7 +47,7 @@ class MyPostsActions {
     });
   }
 
-  editPost(id) {
+  chosenPost(id) {
     console.log("id", id);
     console.log("actions edit");
   }

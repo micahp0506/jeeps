@@ -43,7 +43,7 @@ class MyPosts extends React.Component {
     // Handling editing of post
     handleEditPost(e) {
         console.log("e", e.target.value);
-        MyPostsActions.editPost(e.target.value)
+        MyPostsActions.chosenPost(e.target.value)
     }
 
     render() {

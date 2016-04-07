@@ -80,7 +80,7 @@ var MyPostsActions = function () {
   function MyPostsActions() {
     _classCallCheck(this, MyPostsActions);
 
-    this.generateActions('myPostsSuccess', 'myPostsFail', 'deleteSuccess', 'deleteFail', 'editSuccess', 'editFail');
+    this.generateActions('myPostsSuccess', 'myPostsFail', 'deleteSuccess', 'deleteFail', 'chosenPostSuccess', 'chosenPostFail');
   }
 
   _createClass(MyPostsActions, [{
@@ -114,8 +114,8 @@ var MyPostsActions = function () {
       });
     }
   }, {
-    key: 'editPost',
-    value: function editPost(id) {
+    key: 'chosenPost',
+    value: function chosenPost(id) {
       console.log("id", id);
       console.log("actions edit");
     }
@@ -2888,7 +2888,7 @@ var MyPosts = function (_React$Component) {
         key: 'handleEditPost',
         value: function handleEditPost(e) {
             console.log("e", e.target.value);
-            _MyPostsActions2.default.editPost(e.target.value);
+            _MyPostsActions2.default.chosenPost(e.target.value);
         }
     }, {
         key: 'render',
@@ -4285,6 +4285,22 @@ var MyPostsStore = function () {
     value: function onDeleteFail() {
       this.deletionMessage = 'Deletion failed. Please try again.';
       toastr.error(this.deletionMessage);
+    }
+
+    // Handling chosen post to edit success
+
+  }, {
+    key: 'onChosenPostSuccess',
+    value: function onChosenPostSuccess(res) {
+      console.log("res", res);
+    }
+
+    // handling chosen post to edit failure
+
+  }, {
+    key: 'onChosenPostFail',
+    value: function onChosenPostFail() {
+      console.log("failed!");
     }
   }]);
 
