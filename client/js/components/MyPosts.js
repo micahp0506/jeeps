@@ -39,6 +39,10 @@ class MyPosts extends React.Component {
         MyPostsActions.deletePost(e.target.value);
     }
 
+    // Handling editing of post
+    handleEditPost(e) {
+        console.log("e", e.target.value);
+    }
 
     render() {
         if (this.state.searchState) {
@@ -55,6 +59,7 @@ class MyPosts extends React.Component {
                                 <span className="listing-contact">Contact: {post.contactName} at {post.contactEmail}</span>
                                 <span>Location: {post.location}</span>
                             </span>
+                            <button className="btn btn-default delete" value={post.postId} onClick={this.handleEditPost}>Edit Post</button>
                             <button className="btn btn-danger delete" value={post.postId} onClick={this.handleDeletePost}>Delete Post</button>
                         </div>
                     )

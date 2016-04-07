@@ -2877,6 +2877,14 @@ var MyPosts = function (_React$Component) {
         value: function handleDeletePost(e) {
             _MyPostsActions2.default.deletePost(e.target.value);
         }
+
+        // Handling editing of post
+
+    }, {
+        key: 'handleEditPost',
+        value: function handleEditPost(e) {
+            console.log("e", e.target.value);
+        }
     }, {
         key: 'render',
         value: function render() {
@@ -2928,6 +2936,11 @@ var MyPosts = function (_React$Component) {
                                     'Location: ',
                                     post.location
                                 )
+                            ),
+                            _react2.default.createElement(
+                                'button',
+                                { className: 'btn btn-default delete', value: post.postId, onClick: _this2.handleEditPost },
+                                'Edit Post'
                             ),
                             _react2.default.createElement(
                                 'button',
