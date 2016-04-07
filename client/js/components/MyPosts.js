@@ -59,7 +59,7 @@ class MyPosts extends React.Component {
                                 <span className="listing-contact">Contact: {post.contactName} at {post.contactEmail}</span>
                                 <span>Location: {post.location}</span>
                             </span>
-                            <button className="btn btn-default delete" value={post.postId} onClick={this.handleEditPost}>Edit Post</button>
+                            <button className="btn btn-default delete " value={post.postId} onClick={this.handleEditPost}>Edit Post</button>
                             <button className="btn btn-danger delete" value={post.postId} onClick={this.handleDeletePost}>Delete Post</button>
                         </div>
                     )

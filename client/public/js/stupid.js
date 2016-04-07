@@ -2939,7 +2939,7 @@ var MyPosts = function (_React$Component) {
                             ),
                             _react2.default.createElement(
                                 'button',
-                                { className: 'btn btn-default delete', value: post.postId, onClick: _this2.handleEditPost },
+                                { className: 'btn btn-default delete ', value: post.postId, onClick: _this2.handleEditPost },
                                 'Edit Post'
                             ),
                             _react2.default.createElement(
