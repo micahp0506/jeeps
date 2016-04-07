@@ -35,9 +35,11 @@ node_modules
 # Ignoring bundle file
 client/public/js/bundle.js
 client/public/js/bundle.js.map
+client/public/js/vendor.stupid.js
 
 # Ignoring bower_components
 client/js/bower_components
+client/js/bowerComponents
 
 #Ignoring svg and ttf
 *.svg
