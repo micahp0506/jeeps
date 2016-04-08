@@ -120,7 +120,7 @@ var MyPostsActions = function () {
 
       console.log("id", id);
       console.log("actions edit");
-      fetch('/api/myposts/edit/' + id).then(function (response) {
+      fetch('/api/myposts/one/' + id).then(function (response) {
         return response.json();
       }).then(function (results) {
         console.log("results", results);

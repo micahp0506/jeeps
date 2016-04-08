@@ -50,7 +50,7 @@ class MyPostsActions {
   chosenPost(id) {
     console.log("id", id);
     console.log("actions edit");
-    fetch(`/api/myposts/edit/${id}`)
+    fetch(`/api/myposts/one/${id}`)
     .then((response) => {
         return response.json()
     })

@@ -30,5 +30,11 @@ MyPostsController.deletePost = (req, res, done) => {
     })
 }
 
+MyPostsController.findOnePost = (req, res, done) => {
+    let search = db.Post.findOne({where: {postId: req.params.id}}).then(function(post) {
+        console.log("post", post);
+    })
+}
+
 
 module.exports = MyPostsController;
