@@ -37,7 +37,7 @@ class MyPostsActions {
     $.ajax({
         type: 'DELETE',
         url: `/api/myposts/delete/${id}`,
-  })
+    })
     .done((res) => {
       console.log("posts action id", id);
         this.actions.deleteSuccess(id);
@@ -50,6 +50,17 @@ class MyPostsActions {
   chosenPost(id) {
     console.log("id", id);
     console.log("actions edit");
+    fetch(`/api/myposts/edit/${id}`)
+    .then((response) => {
+        return response.json()
+    })
+    .then((results) => {
+        console.log("results", results);
+        this.actions.chosenPostSuccess(results);
+    })
+    .catch((err) => {
+        this.actions.chosenPostsFail(err);
+    });
   }
 }
 

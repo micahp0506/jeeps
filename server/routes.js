@@ -15,6 +15,7 @@ router.post('/api/user/create', userController.registerUser);
 router.post('/api/post/create', saleController.newPost);
 router.get('/api/search/:category', searchController.findPosts);
 router.get('/api/myposts/:id', myPostsController.findMyPosts);
+router.get('/api/myposts/edit/:id', myPostsController.editMyPosts)
 router.delete('/api/myposts/delete/:id', myPostsController.deletePost);
 
 router.get('*', (req, res) => {

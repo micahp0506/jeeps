@@ -116,8 +116,18 @@ var MyPostsActions = function () {
   }, {
     key: 'chosenPost',
     value: function chosenPost(id) {
+      var _this3 = this;
+
       console.log("id", id);
       console.log("actions edit");
+      fetch('/api/myposts/edit/' + id).then(function (response) {
+        return response.json();
+      }).then(function (results) {
+        console.log("results", results);
+        _this3.actions.chosenPostSuccess(results);
+      }).catch(function (err) {
+        _this3.actions.chosenPostsFail(err);
+      });
     }
   }]);
 
