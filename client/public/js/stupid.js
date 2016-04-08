@@ -122,9 +122,9 @@ var MyPostsActions = function () {
       console.log("actions edit");
       fetch('/api/myposts/one/' + id).then(function (response) {
         return response.json();
-      }).then(function (results) {
-        console.log("results", results);
-        _this3.actions.chosenPostSuccess(results);
+      }).then(function (result) {
+        console.log("result", result);
+        _this3.actions.chosenPostSuccess(result);
       }).catch(function (err) {
         _this3.actions.chosenPostsFail(err);
       });
@@ -4253,6 +4253,7 @@ var MyPostsStore = function () {
     this.searchResults = null;
     this.deletionMessage = null;
     this.postMessage = null;
+    this.chosenPostToEdit = null;
   }
 
   // Handling successful search
@@ -4301,8 +4302,9 @@ var MyPostsStore = function () {
 
   }, {
     key: 'onChosenPostSuccess',
-    value: function onChosenPostSuccess(res) {
-      console.log("res", res);
+    value: function onChosenPostSuccess(result) {
+      console.log("result store", result);
+      this.chosenPostToEdit = result;
     }
 
     // handling chosen post to edit failure

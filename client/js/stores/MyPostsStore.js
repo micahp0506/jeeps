@@ -13,6 +13,7 @@ class MyPostsStore {
     this.searchResults = null;
     this.deletionMessage = null;
     this.postMessage = null;
+    this.chosenPostToEdit = null;
   }
 
   // Handling successful search
@@ -44,8 +45,9 @@ class MyPostsStore {
   }
 
   // Handling chosen post to edit success
-  onChosenPostSuccess(res) {
-    console.log("res", res);
+  onChosenPostSuccess(result) {
+    console.log("result store", result);
+    this.chosenPostToEdit = result;
   }
 
   // handling chosen post to edit failure

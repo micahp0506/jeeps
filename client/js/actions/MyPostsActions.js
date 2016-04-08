@@ -54,9 +54,9 @@ class MyPostsActions {
     .then((response) => {
         return response.json()
     })
-    .then((results) => {
-        console.log("results", results);
-        this.actions.chosenPostSuccess(results);
+    .then((result) => {
+        console.log("result", result);
+        this.actions.chosenPostSuccess(result);
     })
     .catch((err) => {
         this.actions.chosenPostsFail(err);
