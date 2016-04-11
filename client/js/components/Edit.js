@@ -10,6 +10,8 @@ import EditStore from '../stores/EditStore';
 
 // Creating Search to handle actions and store
 class Edit extends React.Component {
+
+
 }
 
 export default Edit;
